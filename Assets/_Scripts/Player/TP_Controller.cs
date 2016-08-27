@@ -13,7 +13,11 @@ public class TP_Controller : MonoBehaviour {
 
 	public float deadZone = 0.1f; // holds dead space (AKA responsiveness to input)
 
-	void Awake() 
+    // External Objects
+    public GameObject flamethrowerObj;
+
+
+    void Awake() 
 	{
 		_characterController = GetComponent<CharacterController>();
 		_instance = this;
@@ -30,7 +34,7 @@ public class TP_Controller : MonoBehaviour {
 		}
 
 		GetLocomotionInput ();
-
+        HandleCameraInput();
 		HandleActionInput ();
 
 		// Tell TP_Motor to update
@@ -84,22 +88,31 @@ public class TP_Controller : MonoBehaviour {
 
 	}
 	
-	// Gets user input for character actions
-	void HandleActionInput()
-	{
-		if (Input.GetButton("Jump")) 
-		{
-			Jump();
-		}
+    // Gets user input for the character action
+    void HandleActionInput()
+    {
+        if (Input.GetButton("Jump"))
+        {
+            Jump();
+        }
 
+        if (Input.GetKeyDown(KeyCode.Z))//(Input.GetButton("W"))
+        {
+            Debug.Log("Pressed Z!");
+            ActivateFlamethrower();
+        }
+    }
+
+	// Gets user input for character camera actions
+	void HandleCameraInput()
+	{
 		if (Input.GetButton("Bumper Left"))
 		{
 			// TODO
 			Debug.Log ("TODO: reset camera - see commented out link");
 			// http://answers.unity3d.com/questions/405954/3rd-person-free-camera-based-in-3d-buzzs-tutorial.html
 			TP_Camera._instance.PutCameraBehindCharacter();
-		}
-		if (Input.GetAxis("Trigger Left")!=0)
+		}		if (Input.GetAxis("Trigger Left")!=0)
 		{
 			TP_Camera._instance.RotateCameraLeft();
 		}
@@ -119,4 +132,10 @@ public class TP_Controller : MonoBehaviour {
 		// TODO: Sound FXs
 
 	}
+
+    void ActivateFlamethrower()
+    {
+        Flamethrower flamethrower = flamethrowerObj.GetComponent<Flamethrower>();
+        flamethrower.ToggleActivatation();
+    }
 }
