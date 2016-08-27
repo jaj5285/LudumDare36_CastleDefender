@@ -15,56 +15,28 @@ public class Flamethrower : Spell
         recoveryBooster = 1;
     }
 
-    void Update()
+    public override void Activate()
     {
-        // Lower timeLeft while active
-        if (isActive)
+        if (timeLeft > 1)
         {
-            Debug.Log("time left:" + timeLeft);
-
-            timeLeft -= Time.deltaTime;
-            if (timeLeft <= 0)
+            isActive = true;
+            GetComponent<Renderer>().enabled = true;
+            foreach (Transform child in transform)
             {
-                Debug.Log(timeLeft);
-                Disactivate();
+                child.gameObject.SetActive(true);
             }
-        }
 
-        // Regain fuel(duration) when not active
-        if (!isActive && (timeLeft < duration))
-        {
-            timeLeft += (Time.deltaTime / recoverySlower * recoveryBooster); // takes 2x as long to recover
-            Debug.Log(timeLeft);
         }
     }
 
-    public void ToggleActivatation()
+    public override void Disactivate()
     {
-        if (!isActive)
-        {
-            Activate();
-        }
-        else
-        {
-            Disactivate();
-        }
-    }
-
-    public void Activate()
-    {
-        Debug.Log("Activate!");
-        isActive = true;
-        GetComponent<Renderer>().enabled = true;
-        //this.gameObject.SetActive(true);
-    }
-
-    public void Disactivate()
-    {
-        Debug.Log("Disactivate!");
         isActive = false;
         GetComponent<Renderer>().enabled = false;
-        //this.gameObject.SetActive(false);
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
     }
-
 
 }

@@ -68,16 +68,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_Scripts\BendGrass.cs" />
+    <Compile Include="Assets\BendGrass.cs" />
+    <Compile Include="Assets\DebugDraw.cs" />
+    <Compile Include="Assets\TP_Camera.cs" />
+    <Compile Include="Assets\_Scripts\EnemyBehavior.cs" />
+    <Compile Include="Assets\_Scripts\EnemyManager.cs" />
     <Compile Include="Assets\_Scripts\Flamethrower.cs" />
-    <Compile Include="Assets\_Scripts\Player\DebugDraw.cs" />
     <Compile Include="Assets\_Scripts\Player\Helper.cs" />
     <Compile Include="Assets\_Scripts\Player\TP_Animator.cs" />
-    <Compile Include="Assets\_Scripts\Player\TP_Camera.cs" />
     <Compile Include="Assets\_Scripts\Player\TP_Controller.cs" />
     <Compile Include="Assets\_Scripts\Player\TP_Motor.cs" />
     <Compile Include="Assets\_Scripts\Player\TP_Status.cs" />
+    <Compile Include="Assets\_Scripts\RodAttack.cs" />
     <Compile Include="Assets\_Scripts\Spell.cs" />
+    <Compile Include="Assets\_Scripts\TrackNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />

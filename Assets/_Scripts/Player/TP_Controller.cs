@@ -15,6 +15,7 @@ public class TP_Controller : MonoBehaviour {
 
     // External Objects
     public GameObject flamethrowerObj;
+    public GameObject rodObj;
 
 
     void Awake() 
@@ -96,10 +97,18 @@ public class TP_Controller : MonoBehaviour {
             Jump();
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))//(Input.GetButton("W"))
+        if (Input.GetKey(KeyCode.Z))//(Input.GetButton("W"))
         {
-            Debug.Log("Pressed Z!");
-            ActivateFlamethrower();
+            ActivateFlamethrower(true);
+        }
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
+            ActivateFlamethrower(false);
+        }
+        if (Input.GetKeyDown(KeyCode.X))//(Input.GetButton("W"))
+        {
+            Debug.Log("Pressed X!");
+            ActivateRod();
         }
     }
 
@@ -133,9 +142,22 @@ public class TP_Controller : MonoBehaviour {
 
 	}
 
-    void ActivateFlamethrower()
+    void ActivateFlamethrower(bool activate)
     {
         Flamethrower flamethrower = flamethrowerObj.GetComponent<Flamethrower>();
-        flamethrower.ToggleActivatation();
+        if (activate)
+        {
+            flamethrower.Activate();
+        }
+        else
+        {
+            flamethrower.Disactivate();
+        }
+    }
+
+    void ActivateRod()
+    {
+        RodAttack rod = rodObj.GetComponent<RodAttack>();
+        rod.ToggleActivatation();
     }
 }
