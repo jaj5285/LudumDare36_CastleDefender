@@ -281,7 +281,7 @@ Terrain:
   m_DrawHeightmap: 1
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialType: 0
+  m_MaterialType: 1
   m_LegacySpecular:
     serializedVersion: 2
     rgba: 4286545791
@@ -364,19 +364,6 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 144458, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
   m_PrefabInternal: {fileID: 984649874}
---- !u!136 &1228585738
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1228585730}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.28513002
-  m_Height: 3.1329346
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1228585739
 MonoBehaviour:
   m_ObjectHideFlags: 0
