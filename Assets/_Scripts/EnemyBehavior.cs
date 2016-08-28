@@ -5,11 +5,6 @@ using System.Collections;
 public class EnemyBehavior : MonoBehaviour
 {
 
-    // TODO: Temp for Testing
-    public Material NormalMaterial;
-    public Material AttackMaterial;
-    public Material DoAttackMaterial;
-
     public float attackDamage = 10f;
     public float attackInterval = 2f;
     public float attackDuration = 0.5f;
@@ -127,21 +122,18 @@ public class EnemyBehavior : MonoBehaviour
 
     IEnumerator handleAttack()
     {
-        // Transition to Attak State
-        this.GetComponent<Renderer>().material = AttackMaterial;
-
         // Repeat Attack Actions
         while (this.isAttacking)
         {
-            this.GetComponent<Renderer>().material = DoAttackMaterial;
+			this.GetComponentsInChildren<Animation>()[0].Play("WK_heavy_infantry_08_attack_B");
             yield return new WaitForSeconds(this.attackDuration);
-            this.curTarget.GetComponent<Construction>().receiveAttack(this.attackDamage);
-            this.GetComponent<Renderer>().material = AttackMaterial;
+			this.curTarget.GetComponent<Construction>().receiveAttack(this.attackDamage);
+
             yield return new WaitForSeconds(this.attackInterval);
         }
 
         // Exit Attack State
-        this.GetComponent<Renderer>().material = NormalMaterial;
+		this.GetComponentsInChildren<Animation>()[0].Play("WK_heavy_infantry_04_charge");
     }
 
     private void selectDestination()
