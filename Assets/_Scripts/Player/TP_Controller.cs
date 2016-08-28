@@ -101,7 +101,7 @@ public class TP_Controller : MonoBehaviour {
         {
             ActivateFlamethrower(true);
         }
-        if (Input.GetKeyUp(KeyCode.Z))
+        if (Input.GetKeyUp(KeyCode.Z) && TP_Status._instance.hasFlamethrower)
         {
             ActivateFlamethrower(false);
         }

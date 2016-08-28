@@ -1,20 +1,28 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class TP_Status : MonoBehaviour {
 
-    public float Health = 100;
+    public static TP_Status _instance;
+    public float health = 100;
+    public float money = 0;
+    public bool hasFlamethrower = false;
 
-    public float RodPower = 10;
+    public Text moneyText;
 
-    public bool HasFlamethrower = false;
 
-	void Start () {
-	
+    void Awake () {
+        _instance = this;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    
+
+    public void AddMoney(float amount)
+    {
+        // Add money
+        money += amount;
+
+        // Update text box
+        moneyText.text = "Gold: " + money;
+    }
 }
