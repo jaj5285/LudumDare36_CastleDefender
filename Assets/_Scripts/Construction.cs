@@ -8,8 +8,10 @@ public class Construction : MonoBehaviour {
 	public float maxHealth = 100f;	// [0, inf]
 	public float curHealth = 100f;	// [0, maxHealth]
 
+	public bool isKillable = true;
+
 	void OnTriggerEnter (Collider other) {
-		if (other.gameObject.tag == "Enemy") {
+		if (this.isKillable && other.gameObject.tag == "Enemy") {
 			// Cause Enemy to attack
 			other.gameObject.GetComponent<EnemyBehavior>().setTarget(this.gameObject);
 		}

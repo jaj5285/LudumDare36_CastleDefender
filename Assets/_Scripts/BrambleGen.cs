@@ -23,12 +23,21 @@ public class BrambleGen : MonoBehaviour {
 
 	IEnumerator HandleVineGen () {
 		GameObject[] newVines = new GameObject[vineCount];
+		Vector3[] startPos = new Vector3[vineCount];
 		for (int i = 0; i < vineCount; i++) {
 			newVines [i] = GameObject.Instantiate (vinePrefab);
 			newVines [i].transform.SetParent (this.transform);
 			newVines [i].transform.localScale = new Vector3 (Random.Range (0.3f, 0.5f), Random.Range (0.3f, 0.5f), Random.Range (0.3f, 0.5f));
 			Vector2 randPos = radius * Random.insideUnitCircle;
-			newVines [i].transform.localPosition = new Vector3(randPos.x, this.verticalOffset, randPos.y);
+			Vector3 idealPos = new Vector3 (randPos.x, 0f, randPos.y) + this.transform.position;
+
+			RaycastHit groundHit;
+			if (Physics.Raycast (idealPos, -Vector3.up, out groundHit)) {
+				idealPos -= new Vector3 (0, groundHit.distance, 0);
+			}
+
+			startPos [i] = idealPos - new Vector3 (0f, this.verticalOffset, 0f);
+			newVines [i].transform.position = startPos[i];
 			newVines [i].transform.rotation = Quaternion.Euler (270, Random.Range (0f, 360f), 0f);
 		}
 
@@ -37,8 +46,9 @@ public class BrambleGen : MonoBehaviour {
 		while ((Time.time - startTime) < this.genTime) {
 			for (int i = 0; i < vineCount; i++) {
 				if (Random.Range (0f, 1f) <= this.growthProbability) {
-					float curGrowth = Mathf.Clamp (newVines [i].transform.localPosition.y + this.growthAmount, this.verticalOffset, 0f);
-					newVines [i].transform.localPosition = new Vector3 (newVines[i].transform.localPosition.x, curGrowth, newVines[i].transform.localPosition.z);
+					float curGrowth = newVines [i].transform.position.y - startPos [i].y;
+					curGrowth = Mathf.Clamp (curGrowth + growthAmount, 0f, this.verticalOffset);
+					newVines [i].transform.position = new Vector3 (startPos [i].x, startPos[i].y + curGrowth, startPos [i].z); 
 				}
 			}
 			yield return new WaitForEndOfFrame ();

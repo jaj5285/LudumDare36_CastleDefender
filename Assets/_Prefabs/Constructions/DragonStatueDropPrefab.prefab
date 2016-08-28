@@ -254,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   curHealth: 100
+  isKillable: 0
 --- !u!114 &11465550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -302,6 +303,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isKillable
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
