@@ -25,8 +25,9 @@ public class EnemyManager : MonoBehaviour {
 			GameObject newEnemy = GameObject.Instantiate(enemyPrefab);
 
 			//Pick a spawn node "at random"
-			newEnemy.transform.position = spawnNodes [0].transform.position;
-			newEnemy.GetComponent<EnemyBehavior> ().prevNode = spawnNodes [0];
+			int randIndex = Random.Range(0, spawnNodes.Length);
+			newEnemy.transform.position = spawnNodes [randIndex].transform.position;
+			newEnemy.GetComponent<EnemyBehavior> ().prevNode = spawnNodes [randIndex];
 
 			yield return new WaitForSeconds (spawnInterval);
 		}

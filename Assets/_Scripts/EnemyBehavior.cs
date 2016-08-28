@@ -158,8 +158,9 @@ public class EnemyBehavior : MonoBehaviour
             this.prevNodeCode = this.nextNodeCode;
         }
 
-        if (this.curDestination != null)
-        {
+		if (this.prevNodeCode.preferredNext != -1) {
+			this.nextNode = this.prevNodeCode.connectedNodes [this.prevNodeCode.preferredNext];
+		} else if (this.curDestination != null) {
             float minDist = Vector3.Distance(this.curDestination.transform.position, this.prevNodeCode.connectedNodes[0].transform.position);
             int minDistIndex = 0;
 
@@ -175,8 +176,7 @@ public class EnemyBehavior : MonoBehaviour
 
                 this.nextNode = this.prevNodeCode.connectedNodes[minDistIndex];
             }
-        }
-        else {
+        } else {
             this.nextNode = this.prevNodeCode.connectedNodes[Random.Range(0, this.prevNodeCode.connectedNodes.Length)];
         }
 
