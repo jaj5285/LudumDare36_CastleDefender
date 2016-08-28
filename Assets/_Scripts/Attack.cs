@@ -9,7 +9,7 @@ public enum AttackType
     , Rock
 }
 
-public class Spell : MonoBehaviour
+public class Attack : MonoBehaviour
 {
     public bool isActive;
     public int level;
@@ -33,8 +33,6 @@ public class Spell : MonoBehaviour
         // Lower timeLeft while active
         if (isActive)
         {
-            Debug.Log("time left:" + timeLeft);
-
             timeLeft -= Time.deltaTime;
             if (timeLeft <= 0)
             {
@@ -47,7 +45,6 @@ public class Spell : MonoBehaviour
         if (!isActive && (timeLeft < duration))
         {
             timeLeft += (Time.deltaTime / recoverySlower * recoveryBooster); // takes 2x as long to recover
-            Debug.Log(timeLeft);
         }
     }
 
@@ -65,7 +62,6 @@ public class Spell : MonoBehaviour
 
     public virtual void Activate()
     {
-        Debug.Log("Activate!");
         isActive = true;
         GetComponent<Renderer>().enabled = true;
         //this.gameObject.SetActive(true);
@@ -73,7 +69,6 @@ public class Spell : MonoBehaviour
 
     public virtual void Disactivate()
     {
-        Debug.Log("Disactivate!");
         isActive = false;
         GetComponent<Renderer>().enabled = false;
         //this.gameObject.SetActive(false);

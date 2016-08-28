@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Flamethrower : Spell
+public class Flamethrower : Attack
 {
     void Start()
     {

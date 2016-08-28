@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class EnemyBehavior : MonoBehaviour {
@@ -28,11 +29,26 @@ public class EnemyBehavior : MonoBehaviour {
 
 	public bool isAttacking = false;
 
-	void Start () {
+    // Statuses
+    public float health = 50;
+    public float goldDrop = 50;
+    public AttackType resistance = AttackType.Fire;
+    public float resistanceMuter = 2; // Never set this to 0! Higher means less damage taken when resistant to attacktype
+    public AttackType weakness;
+    public float weaknessMultiplier = 1.5f; // Never set this to 0! Higher means more damage taken when weak to attacktype
+
+    public TextMesh healthText;
+    public GameObject worldController;
+
+
+    void Start () {
 		this.prevNodeCode = this.prevNode.GetComponent<TrackNode> ();
 		this.selectNextNode ();
 		this.selectDestination ();
-	}
+
+        healthText.text = "HP: " + health;
+        worldController = GameObject.Find("WorldController");
+    }
 
 	void FixedUpdate () {
 		if (this.isAttacking) {
@@ -41,6 +57,19 @@ public class EnemyBehavior : MonoBehaviour {
 			this.moveUnitTowardDest ();
 		}
 	}
+
+    void Update()
+    {
+        // Kill self
+        if (health <= 0)
+        {
+            // Give gold
+            worldController.GetComponent<WorldController>().AddMoney(goldDrop);
+
+            // Die
+            Destroy(this.gameObject);
+        }
+    }
 
 	public void setTarget (GameObject target) {
 		this.isAttacking = true;
@@ -124,4 +153,28 @@ public class EnemyBehavior : MonoBehaviour {
 		this.distToNextNode = Vector3.Distance (this.prevNode.transform.position, this.nextNode.transform.position);
 		this.curProgress = 0f;
 	}
+
+
+    void OnTriggerEnter(Collider col)
+    {
+        // Is attacked
+        if (col.gameObject.CompareTag("Attack") && col.gameObject.GetComponent<Attack>().isActive)
+        {
+            Attack colAttack = col.gameObject.GetComponent<Attack>();
+            float calculatedDamage = colAttack.power;
+
+            // Calculate damage taken using weakness and resistance
+            if (colAttack.attackType == resistance)
+            {
+                calculatedDamage = calculatedDamage / resistanceMuter;
+            }
+            if (colAttack.attackType == weakness)
+            {
+                calculatedDamage = calculatedDamage * weaknessMultiplier;
+            }
+            health -= calculatedDamage;
+            // Update text box
+            healthText.text = "HP: " + health;
+        }
+    }
 }

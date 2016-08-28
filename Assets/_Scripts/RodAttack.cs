@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RodAttack : Spell
+public class RodAttack : Attack
 {
     void Start()
     {
