@@ -470,7 +470,7 @@ GameObject:
   - 23: {fileID: 2384052}
   - 114: {fileID: 11447670}
   m_Layer: 8
-  m_Name: Flamethrower
+  m_Name: PlayerFlamethrower
   m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -492,6 +492,7 @@ GameObject:
   - 114: {fileID: 11432100}
   - 114: {fileID: 11435266}
   - 114: {fileID: 11470306}
+  - 114: {fileID: 11472256}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1596,7 +1597,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170052}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2720,9 +2721,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deadZone: 0.1
-  flamethrowerObj: {fileID: 142404}
-  rodObj: {fileID: 113726}
-  currRunestoneInRange: {fileID: 0}
 --- !u!114 &11435266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2737,7 +2735,9 @@ MonoBehaviour:
   health: 100
   interactionState: 0
   isInRangeOfRunestone: 0
-  hasFlamethrower: 1
+  flamethrowerObj: {fileID: 142404}
+  rodObj: {fileID: 113726}
+  currRunestoneInRange: {fileID: 0}
 --- !u!114 &11442968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2749,7 +2749,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd47840d4d2c7245bfcf0da5f1be9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myName: spell
   isActive: 0
+  upgradeCost: 0
   level: 0
   power: 0
   duration: 0
@@ -2789,7 +2791,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2197f16214efd9499add37d1373fdcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myName: spell
   isActive: 0
+  upgradeCost: 0
   level: 1
   power: 0
   duration: 0
@@ -2821,6 +2825,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d9063f552c78c4c83d731b2c208190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11472256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08769cd067f02140bcc6b735071d1a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdPrefabs:
+  - {fileID: 144530, guid: 2344df2250384c3499ab57a2b5f53ff6, type: 2}
+  - {fileID: 135316, guid: 04553edcc8b0bd048b1c362786b81034, type: 2}
+  - {fileID: 127674, guid: 256a487ce4728ed47ae8472edfc7e309, type: 2}
+  dropPrefabs:
+  - {fileID: 133878, guid: 1d37501cc1548cd48949e4ae622e1d4e, type: 2}
+  - {fileID: 124412, guid: 6cee58f831fc3da45979d392570d364c, type: 2}
+  - {fileID: 159214, guid: 454cb0a93995f8b44aac51e23f9ca186, type: 2}
+  curHeldObjIndex: 0
+  curHeldObj: {fileID: 0}
+  holdOffset: {x: 0, y: 0, z: 2.5}
 --- !u!137 &13717060
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

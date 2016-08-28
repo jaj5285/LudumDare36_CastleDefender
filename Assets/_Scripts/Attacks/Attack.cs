@@ -13,6 +13,7 @@ public class Attack : MonoBehaviour
 {
     public static Attack _instance;
 
+    public string myName = "spell";
     public bool isActive;
     public float upgradeCost; // how much money for the next upgrade
     public int level;
@@ -76,6 +77,13 @@ public class Attack : MonoBehaviour
         isActive = false;
         GetComponent<Renderer>().enabled = false;
         //this.gameObject.SetActive(false);
+    }
+
+
+    public virtual void Upgrade(int myLevel)
+    {
+        Debug.Log("Parent upgrade was called!");
+        Debug.Log("No upgrade level selected!");
     }
 
 }

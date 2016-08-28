@@ -343,11 +343,10 @@ MonoBehaviour:
   cancelText: (Y) Cancel
   shopText: (X) Buy Spell          (B) Buy Construction
   worldController: {fileID: 0}
+  spellObj: {fileID: 0}
+  constructionIndex: 1
   spellText: 
   constructionText: 
-  flamethrowerCost_Lv1: 40
-  flamethrowerCost_Lv2: 100
-  dragonCost_Lv1: 500
 --- !u!114 &11449466
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -506,6 +506,56 @@ Transform:
   - {fileID: 2078045608}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1001 &695528808
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 18.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.120000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 5.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.6129738
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.35250938
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.35250956
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.61297417
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11428660, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
+      propertyPath: constructionIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11428660, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
+      propertyPath: spellObj
+      value: 
+      objectReference: {fileID: 1545128356}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &984649874
 Prefab:
   m_ObjectHideFlags: 0
@@ -547,32 +597,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 420356, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.5326752
+      value: 0.53267515
       objectReference: {fileID: 0}
     - target: {fileID: 420356, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.070340455
+      value: 0.07034045
       objectReference: {fileID: 0}
     - target: {fileID: 420356, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.83613276
+      value: 0.83613265
       objectReference: {fileID: 0}
     - target: {fileID: 420356, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.110415146
+      value: -0.11041513
       objectReference: {fileID: 0}
-    - target: {fileID: 11435266, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
-      propertyPath: hasFlamethrower
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11435266, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
-      propertyPath: flamethrowerObj
-      value: 
-      objectReference: {fileID: 104937205}
-    - target: {fileID: 11435266, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
-      propertyPath: rodObj
-      value: 
-      objectReference: {fileID: 1545128356}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
   m_IsPrefabParent: 0
@@ -693,9 +731,17 @@ Prefab:
       value: 
       objectReference: {fileID: 12100000, guid: 9bdb18c49d114cb4300035184241aa39,
         type: 2}
+    - target: {fileID: 11428660, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
+      propertyPath: spellObj
+      value: 
+      objectReference: {fileID: 104937205}
     - target: {fileID: 100000, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
       propertyPath: m_Name
       value: Fire Runestone
+      objectReference: {fileID: 0}
+    - target: {fileID: 11428660, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
+      propertyPath: constructionIndex
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a74d6c1e0c291b64db4bad3a3b342144, type: 2}
@@ -735,7 +781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5563650b849d0a04cb056a267deb1c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
+  money: 500
   moneyText: {fileID: 1935070180}
   PlayerObj: {fileID: 1173862278}
 --- !u!4 &1489619406

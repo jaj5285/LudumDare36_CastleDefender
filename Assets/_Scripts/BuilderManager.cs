@@ -3,6 +3,8 @@ using System.Collections;
 
 public class BuilderManager : MonoBehaviour {
 
+    public static BuilderManager _instance;
+
 	public GameObject[] holdPrefabs;
 	public GameObject[] dropPrefabs;
 
@@ -15,6 +17,8 @@ public class BuilderManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        _instance = this;
+
 		if (curHeldObj != null) {
 			// Update curHeldObj's position and stuff
 
@@ -28,7 +32,6 @@ public class BuilderManager : MonoBehaviour {
 			curHeldObj = GameObject.Instantiate (this.holdPrefabs [itemIndex]);
 			curHeldObj.transform.SetParent (this.transform);
 			curHeldObj.transform.localPosition = this.holdOffset;
-			curHeldObj.transform.localRotation = Quaternion.identity;
 		}
 	}
 

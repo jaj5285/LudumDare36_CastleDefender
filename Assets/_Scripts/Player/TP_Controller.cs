@@ -137,6 +137,9 @@ public class TP_Controller : MonoBehaviour {
         {
             // Buy Construction
             TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().BuyConstruction();
+            TP_Status._instance.interactionState = InteractionState.Construct;
+            TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetInteractText(true);
+            TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetShopText(false);
         }
         if (Input.GetKeyDown(KeyCode.J) || Input.GetButtonDown("XboxX"))
         {
@@ -153,14 +156,19 @@ public class TP_Controller : MonoBehaviour {
     }
     void HandleConstructionInput()
     {
-        if (Input.GetKeyDown(KeyCode.K) || Input.GetButtonDown("XboxA"))
+        if (Input.GetKeyDown(KeyCode.J) || Input.GetButtonDown("XboxX"))
         {
             // Drop Construction
+            BuilderManager._instance.dropCurItem();
+            // Reset interactionState
+            TP_Status._instance.interactionState = InteractionState.Default;
+            TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetInteractText(true);
+            TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetShopText(false);
         }
-        if ((Input.GetKeyDown(KeyCode.L) || Input.GetButtonDown("XboxB")))
-        {
-            // Cancel Construction
-        }
+        //if ((Input.GetKeyDown(KeyCode.L) || Input.GetButtonDown("XboxB")))
+        //{
+        //    // Cancel Construction
+        //}
     }
 
 
@@ -230,9 +238,12 @@ public class TP_Controller : MonoBehaviour {
         {
             TP_Status._instance.isInRangeOfRunestone = false;
 
-            // Reset InteractionState in case it's set to Shop InteractionState
-            TP_Status._instance.interactionState = InteractionState.Default;
-            TP_Status._instance.currRunestoneInRange = null;
+            if (TP_Status._instance.interactionState == InteractionState.Shop)
+            {
+                // Reset InteractionState in case it's set to Shop InteractionState
+                TP_Status._instance.interactionState = InteractionState.Default;
+                TP_Status._instance.currRunestoneInRange = null;
+            }
         }
     }
 }

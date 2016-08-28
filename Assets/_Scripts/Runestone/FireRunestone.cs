@@ -4,15 +4,15 @@ using System.Collections;
 
 public class FireRunestone : Runestone
 {
-
-    public string spellText;
-    public string constructionText;
-    
     void Start()
     {
+        // Which runestone specific upgrades (for fire runestone, rock runestone, ect)
+        //constructionIndex = 2;
+        //spellObj = GameObject.Find("PlayerFlamethrower");
+
+
         interactText = "(Y) Interact";
         cancelText = "(Y) Cancel";
-
 
         Flamethrower flamethrower = worldController.GetComponent<WorldController>().PlayerObj.GetComponent<TP_Status>().flamethrowerObj.GetComponent<Flamethrower>();
 
@@ -24,28 +24,33 @@ public class FireRunestone : Runestone
         shopTextObj.text = shopText;
     }
 
-    public override void BuyConstruction()
-    {
-        Debug.Log("Buy FIRE construction here ");
-    }
-    public override void BuySpell()
-    {
-        WorldController wc = worldController.GetComponent<WorldController>();
-        TP_Status tpStatus = worldController.GetComponent<WorldController>().PlayerObj.GetComponent<TP_Status>();
-        Flamethrower flamethrower = tpStatus.flamethrowerObj.GetComponent<Flamethrower>();
+    //public override void BuyConstruction()
+    //{
+    //    Debug.Log("Buy FIRE construction here ");
+    //    BuilderManager bm = worldController.GetComponent<WorldController>().PlayerObj.GetComponent<BuilderManager>();
+    //    bm.pickupItem(constructionIndex);
+    //}
+    //public override void BuySpell()
+    //{
+    //    WorldController wc = worldController.GetComponent<WorldController>();
+    //    //TP_Status tpStatus = worldController.GetComponent<WorldController>().PlayerObj.GetComponent<TP_Status>();
+    //    //Attack spell = tpStatus.flamethrowerObj.GetComponent<Attack>();
 
-        if (wc.money >= flamethrower.upgradeCost)
-        {
-            int newLevel = flamethrower.level++;
+    //    Attack spell = spellObj.GetComponent<Attack>();
 
-            wc.SubtractMoney(newLevel);
-            flamethrower.Upgrade(newLevel);
+    //    if (wc.money >= spell.upgradeCost)
+    //    {
+    //        int newLevel = spell.level+1;
+    //        Debug.Log("thislevel"+newLevel);
 
-            // Update TextMesh
-            spellText = "(X) Flamethrower Lv"+ (newLevel+1) +" $" + flamethrower.upgradeCost;
-            shopText = spellText + constructionText;
-            shopTextObj.text = shopText;
-        }
-    }
+    //        wc.SubtractMoney(spell.upgradeCost);
+    //        spell.Upgrade(newLevel);
+
+    //        // Update TextMesh
+    //        spellText = "(X) "+ spell.myName +" Lv"+ (newLevel+1) +" $" + spell.upgradeCost;
+    //        shopText = spellText + constructionText;
+    //        shopTextObj.text = shopText;
+    //    }
+    //}
 
 }

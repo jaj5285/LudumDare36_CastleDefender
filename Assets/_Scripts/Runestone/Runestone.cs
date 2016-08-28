@@ -13,7 +13,11 @@ public class Runestone : MonoBehaviour {
     public string shopText = "(X) Buy Spell          (B) Buy Construction";
     
     public GameObject worldController;
-
+    public GameObject spellObj;
+    public int constructionIndex = 0;
+    
+    public string spellText;
+    public string constructionText;
 
     void Awake()
     {
@@ -27,14 +31,36 @@ public class Runestone : MonoBehaviour {
         shopTextObj.text = shopText;
     }
 
-    public virtual void BuyConstruction()
+    public void BuyConstruction()
     {
-        Debug.Log("Buy construction here ");
+        Debug.Log("Buy FIRE construction here ");
+        BuilderManager bm = worldController.GetComponent<WorldController>().PlayerObj.GetComponent<BuilderManager>();
+        bm.pickupItem(constructionIndex);
     }
-    public virtual void BuySpell()
+
+    public void BuySpell()
     {
-        Debug.Log("Buy spell here ");
+        WorldController wc = worldController.GetComponent<WorldController>();
+        //TP_Status tpStatus = worldController.GetComponent<WorldController>().PlayerObj.GetComponent<TP_Status>();
+        //Attack spell = tpStatus.flamethrowerObj.GetComponent<Attack>();
+
+        Attack spell = spellObj.GetComponent<Attack>();
+
+        if (wc.money >= spell.upgradeCost)
+        {
+            int newLevel = spell.level + 1;
+            Debug.Log("thislevel" + newLevel);
+
+            wc.SubtractMoney(spell.upgradeCost);
+            spell.Upgrade(newLevel);
+
+            // Update TextMesh
+            spellText = "(X) " + spell.myName + " Lv" + (newLevel + 1) + " $" + spell.upgradeCost;
+            shopText = spellText + constructionText;
+            shopTextObj.text = shopText;
+        }
     }
+
 
     public void SetInteractText(bool isActivated)
     {

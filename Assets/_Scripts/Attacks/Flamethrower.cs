@@ -8,6 +8,8 @@ public class Flamethrower : Attack
     void Start()
     {
         _instance = this;
+
+        myName = "Flamethrower";
         level = 0;
         upgradeCost = 50;
         power = 2;
@@ -20,9 +22,10 @@ public class Flamethrower : Attack
         recoveryBooster = 1;
     }
 
-    public void Upgrade(int level)
+    public override void Upgrade(int myLevel)
     {
-        switch (level)
+        Debug.Log("non parent upgrade");
+        switch (myLevel)
         {
             case 1:
                 level = 1;
@@ -32,6 +35,7 @@ public class Flamethrower : Attack
                 timeLeft = duration;
                 recoverySlower = 2;
                 recoveryBooster = 1;
+                Debug.Log("newlv"+level);
                 break;
             case 2:
                 level = 2;

@@ -5,7 +5,7 @@ using System.Collections;
 public class WorldController : MonoBehaviour
 {
     public static WorldController _instance;
-    public float money = 0;
+    public float money = 100;
     public Text moneyText;
 
     public GameObject PlayerObj;
