@@ -127,7 +127,9 @@ public class EnemyBehavior : MonoBehaviour
         {
 			this.GetComponentsInChildren<Animation>()[0].Play("WK_heavy_infantry_08_attack_B");
             yield return new WaitForSeconds(this.attackDuration);
-			this.curTarget.GetComponent<Construction>().receiveAttack(this.attackDamage);
+			if (this.curTarget != null) {
+				this.curTarget.GetComponent<Construction> ().receiveAttack (this.attackDamage);
+			}
 
             yield return new WaitForSeconds(this.attackInterval);
         }

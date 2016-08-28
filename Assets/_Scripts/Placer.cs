@@ -7,18 +7,49 @@ public class Placer : MonoBehaviour {
 	public GameObject badChild;
 
 	public bool goodPlace = true;
+	public bool rendInChildren = false;
 
 	void Start () {
-		goodChild.GetComponent<Renderer> ().enabled = true;
-		badChild.GetComponent<Renderer> ().enabled = false;
+		if (rendInChildren) {
+			Renderer[] rends;
+			rends = goodChild.GetComponentsInChildren<Renderer> ();
+
+			foreach (Renderer rend in rends) {
+				rend.enabled = true;
+			}
+
+			rends = badChild.GetComponentsInChildren<Renderer> ();
+			foreach (Renderer rend in rends) {
+				rend.enabled = false;
+			}
+
+		} else { 
+			goodChild.GetComponent<Renderer> ().enabled = true;
+			badChild.GetComponent<Renderer> ().enabled = false;
+		}
 	}
 
 	void OnTriggerEnter (Collider other) {
 		if (goodPlace && other.tag == "Construction") {
 			goodPlace = false;
 
-			goodChild.GetComponent<Renderer> ().enabled = false;
-			badChild.GetComponent<Renderer> ().enabled = true;
+			if (rendInChildren) {
+				Renderer[] rends;
+				rends = goodChild.GetComponentsInChildren<Renderer> ();
+
+				foreach (Renderer rend in rends) {
+					rend.enabled = false;
+				}
+
+				rends = badChild.GetComponentsInChildren<Renderer> ();
+				foreach (Renderer rend in rends) {
+					rend.enabled = true;
+				}
+
+			} else { 
+				goodChild.GetComponent<Renderer> ().enabled = false;
+				badChild.GetComponent<Renderer> ().enabled = true;
+			}
 		}
 	}
 
@@ -26,8 +57,23 @@ public class Placer : MonoBehaviour {
 		if (!goodPlace && other.tag == "Construction") {
 			goodPlace = true;
 
-			goodChild.GetComponent<Renderer> ().enabled = true;
-			badChild.GetComponent<Renderer> ().enabled = false;
+			if (rendInChildren) {
+				Renderer[] rends;
+				rends = goodChild.GetComponentsInChildren<Renderer> ();
+
+				foreach (Renderer rend in rends) {
+					rend.enabled = true;
+				}
+
+				rends = badChild.GetComponentsInChildren<Renderer> ();
+				foreach (Renderer rend in rends) {
+					rend.enabled = false;
+				}
+
+			} else { 
+				goodChild.GetComponent<Renderer> ().enabled = true;
+				badChild.GetComponent<Renderer> ().enabled = false;
+			}
 		}
 	}
 }
