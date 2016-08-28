@@ -6,10 +6,11 @@ public class Flamethrower : Attack
     void Start()
     {
         level = 1;
-        power = 10;
+        power = 2;
         duration = 5;
         timeLeft = duration;
         attackType = AttackType.Fire;
+        isContinuousAttack = true;
         isActive = false;
         recoverySlower = 2;
         recoveryBooster = 1;

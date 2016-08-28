@@ -17,6 +17,7 @@ public class TP_Controller : MonoBehaviour {
     public GameObject flamethrowerObj;
     public GameObject rodObj;
 
+    public GameObject currRunestoneInRange;
 
     void Awake() 
 	{
@@ -36,7 +37,18 @@ public class TP_Controller : MonoBehaviour {
 
 		GetLocomotionInput ();
         HandleCameraInput();
-		HandleActionInput ();
+
+        switch (TP_Status._instance.interactionState) {
+            case InteractionState.Shop:
+                HandleShopInput();
+                break;
+            case InteractionState.Construct:
+                HandleConstructionInput();
+                break;
+            default:
+                HandleActionInput();
+                break;
+        }
 
 		// Tell TP_Motor to update
 		TP_Motor._instance.UpdateMotor ();
@@ -92,29 +104,69 @@ public class TP_Controller : MonoBehaviour {
     // Gets user input for the character action
     void HandleActionInput()
     {
-        if (Input.GetButton("Jump"))
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.K) || Input.GetButton("XboxA")) //Input.GetButton("Jump") makes Y be a jump :(
         {
             Jump();
         }
-
-        //hold flamethrower
-        if ((Input.GetKey(KeyCode.Z) || Input.GetButton("XboxB")) && TP_Status._instance.hasFlamethrower)
+        if ((Input.GetKey(KeyCode.L) || Input.GetButton("XboxB")) && TP_Status._instance.hasFlamethrower)
         {
+            // Use/Hold down for flamethrower
             ActivateFlamethrower(true);
         }
-        //stop flamethrower
-        if ((Input.GetKeyUp(KeyCode.Z) || Input.GetButtonUp("XboxB")) && TP_Status._instance.hasFlamethrower)
+        if ((Input.GetKeyUp(KeyCode.L) || Input.GetButtonUp("XboxB")) && TP_Status._instance.hasFlamethrower)
         {
+            // Stop flamethrower
             ActivateFlamethrower(false);
         }
-        if (Input.GetKeyDown(KeyCode.X) || Input.GetButtonDown("XboxA"))//(Input.GetButton("W"))
+        if (Input.GetKeyDown(KeyCode.K) || Input.GetButtonDown("XboxX"))
         {
+            // Use rod
             ActivateRod();
+        }
+        if ((Input.GetKeyDown(KeyCode.I) || Input.GetButtonDown("XboxY")) && TP_Status._instance.isInRangeOfRunestone)
+        {
+            // Activate Shop InteractionState
+            TP_Status._instance.interactionState = InteractionState.Shop;
+            currRunestoneInRange.GetComponent<Runestone>().SetInteractText(false);
         }
     }
 
-	// Gets user input for character camera actions
-	void HandleCameraInput()
+    void HandleShopInput()
+    {
+        if (Input.GetKeyDown(KeyCode.K) || Input.GetButtonDown("XboxA"))
+        {
+            // Continue text
+        }
+        if ((Input.GetKeyDown(KeyCode.L) || Input.GetButtonDown("XboxB")))
+        {
+            // Buy Construction
+        }
+        if (Input.GetKeyDown(KeyCode.J) || Input.GetButton("XboxX"))
+        {
+            // Buy Spell
+        }
+        if ((Input.GetKeyDown(KeyCode.I) || Input.GetButtonDown("XboxY")) && TP_Status._instance.isInRangeOfRunestone)
+        {
+            // Cancel Shop InteractionState
+            TP_Status._instance.interactionState = InteractionState.Default;
+            currRunestoneInRange.GetComponent<Runestone>().SetInteractText(true);
+        }
+    }
+    void HandleConstructionInput()
+    {
+        if (Input.GetKeyDown(KeyCode.K) || Input.GetButtonDown("XboxA"))
+        {
+            // Drop Construction
+        }
+        if ((Input.GetKeyDown(KeyCode.L) || Input.GetButtonDown("XboxB")))
+        {
+            // Cancel Construction
+        }
+    }
+
+
+    // Gets user input for character camera actions
+    void HandleCameraInput()
 	{
 		if (Input.GetButton("Bumper Left"))
 		{
@@ -161,5 +213,27 @@ public class TP_Controller : MonoBehaviour {
     {
         RodAttack rod = rodObj.GetComponent<RodAttack>();
         rod.ToggleActivatation();
+    }
+
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.CompareTag("Target"))
+        {
+            TP_Status._instance.isInRangeOfRunestone = true;
+            currRunestoneInRange = col.gameObject;
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.CompareTag("Target"))
+        {
+            TP_Status._instance.isInRangeOfRunestone = false;
+
+            // Reset InteractionState in case it's set to Shop InteractionState
+            TP_Status._instance.interactionState = InteractionState.Default;
+            currRunestoneInRange = null;
+        }
     }
 }

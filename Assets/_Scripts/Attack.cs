@@ -17,6 +17,7 @@ public class Attack : MonoBehaviour
     public float duration;
     public float timeLeft;
     public AttackType attackType;
+    public bool isContinuousAttack;    
     public float recoverySlower; // the higher this number, the slower the recovery
     public float recoveryBooster;
 

@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2380872}
   - 114: {fileID: 11441430}
   - 54: {fileID: 5483656}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ GameObject:
   - 23: {fileID: 2382346}
   - 102: {fileID: 10251380}
   - 114: {fileID: 11485502}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyHP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,11 +196,14 @@ MonoBehaviour:
   distToNextNode: 1
   isAttacking: 0
   health: 100
+  goldDrop: 50
   resistance: 0
   resistanceMuter: 2
   weakness: 0
   weaknessMultiplier: 1.5
+  allowContinuedAttack: 0
   healthText: {fileID: 10251380}
+  worldController: {fileID: 0}
 --- !u!114 &11485502
 MonoBehaviour:
   m_ObjectHideFlags: 1

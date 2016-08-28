@@ -10,6 +10,7 @@ public class RodAttack : Attack
         duration = 0.25f;
         timeLeft = duration;
         attackType = AttackType.Fire;
+        isContinuousAttack = false;
         isActive = false;
         recoverySlower = 1;
         recoveryBooster = 2;

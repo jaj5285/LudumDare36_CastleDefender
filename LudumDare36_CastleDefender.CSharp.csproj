@@ -83,6 +83,7 @@
     <Compile Include="Assets\_Scripts\Player\TP_Motor.cs" />
     <Compile Include="Assets\_Scripts\Player\TP_Status.cs" />
     <Compile Include="Assets\_Scripts\RodAttack.cs" />
+    <Compile Include="Assets\_Scripts\Runestone.cs" />
     <Compile Include="Assets\_Scripts\TrackNode.cs" />
     <Compile Include="Assets\_Scripts\WorldController.cs" />
   </ItemGroup>
