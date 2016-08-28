@@ -440,8 +440,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdPrefabs:
   - {fileID: 144530, guid: 2344df2250384c3499ab57a2b5f53ff6, type: 2}
+  - {fileID: 135316, guid: 04553edcc8b0bd048b1c362786b81034, type: 2}
   dropPrefabs:
   - {fileID: 133878, guid: 1d37501cc1548cd48949e4ae622e1d4e, type: 2}
+  - {fileID: 124412, guid: 6cee58f831fc3da45979d392570d364c, type: 2}
   curHeldObjIndex: 0
   curHeldObj: {fileID: 0}
   holdOffset: {x: 0, y: 0, z: 2.5}
