@@ -27,15 +27,34 @@ public class Runestone : MonoBehaviour {
         shopTextObj.gameObject.SetActive(false);
         interactionLight.intensity = 0;
 
+        // Text
+        interactText = "(Y) Interact";
+        cancelText = "(Y) Cancel";
+
         interactTextObj.text = interactText;
+        shopTextObj.text = shopText;
+
+        // Dynamic shopping text
+        Attack spell = spellObj.GetComponent<Attack>();
+        WorldController wc = worldController.GetComponent<WorldController>();
+        Construction construction = wc.PlayerObj.GetComponent<BuilderManager>().dropPrefabs[constructionIndex].GetComponent<Construction>();
+
+        spellText = "(X) Buy" + spell.myName + " $" + spell.upgradeCost;
+        constructionText = "\n  (B) Buy "+ construction.myName +" $"+ construction.upgradeCost;
+        shopText = spellText + constructionText;
         shopTextObj.text = shopText;
     }
 
     public void BuyConstruction()
     {
-        Debug.Log("Buy FIRE construction here ");
-        BuilderManager bm = worldController.GetComponent<WorldController>().PlayerObj.GetComponent<BuilderManager>();
-        bm.pickupItem(constructionIndex);
+        WorldController wc = worldController.GetComponent<WorldController>();
+        Construction construction = wc.PlayerObj.GetComponent<BuilderManager>().dropPrefabs[constructionIndex].GetComponent<Construction>();
+        if (wc.money >= construction.upgradeCost)
+        {
+            Debug.Log("Buy FIRE construction here ");
+            BuilderManager bm = worldController.GetComponent<WorldController>().PlayerObj.GetComponent<BuilderManager>();
+            bm.pickupItem(constructionIndex);            
+        }
     }
 
     public void BuySpell()
@@ -49,7 +68,6 @@ public class Runestone : MonoBehaviour {
         if (wc.money >= spell.upgradeCost)
         {
             int newLevel = spell.level + 1;
-            Debug.Log("thislevel" + newLevel);
 
             wc.SubtractMoney(spell.upgradeCost);
             spell.Upgrade(newLevel);

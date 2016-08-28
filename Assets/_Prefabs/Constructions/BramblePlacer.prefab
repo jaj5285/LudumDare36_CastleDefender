@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 403124}
   - 212: {fileID: 21252616}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GoodPlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ GameObject:
   - 4: {fileID: 475918}
   - 114: {fileID: 11433144}
   - 135: {fileID: 13504932}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BramblePlacer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 433478}
   - 212: {fileID: 21210138}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BadPlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,6 +101,7 @@ MonoBehaviour:
   goodChild: {fileID: 115636}
   badChild: {fileID: 141194}
   goodPlace: 1
+  rendInChildren: 0
 --- !u!135 &13504932
 SphereCollider:
   m_ObjectHideFlags: 1

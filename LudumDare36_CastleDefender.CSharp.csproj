@@ -73,13 +73,15 @@
     <Compile Include="Assets\_Scripts\Attacks\Attack.cs" />
     <Compile Include="Assets\_Scripts\Attacks\Flamethrower.cs" />
     <Compile Include="Assets\_Scripts\Attacks\RodAttack.cs" />
-    <Compile Include="Assets\_Scripts\BendGrass.cs" />
+    <Compile Include="Assets\_Scripts\Runestone\BendGrass.cs" />
+    <Compile Include="Assets\_Scripts\BrambleAction.cs" />
     <Compile Include="Assets\_Scripts\BrambleGen.cs" />
     <Compile Include="Assets\_Scripts\BuilderManager.cs" />
     <Compile Include="Assets\_Scripts\Construction.cs" />
     <Compile Include="Assets\_Scripts\DebugDraw.cs" />
     <Compile Include="Assets\_Scripts\EnemyBehavior.cs" />
     <Compile Include="Assets\_Scripts\EnemyManager.cs" />
+    <Compile Include="Assets\_Scripts\FlameStatue.cs" />
     <Compile Include="Assets\_Scripts\LookAtCamera.cs" />
     <Compile Include="Assets\_Scripts\Placer.cs" />
     <Compile Include="Assets\_Scripts\Player\Helper.cs" />

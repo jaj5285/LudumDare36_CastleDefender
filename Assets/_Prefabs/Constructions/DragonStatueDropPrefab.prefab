@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 486390}
   - 33: {fileID: 3392072}
   - 23: {fileID: 2343730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 406556}
   - 33: {fileID: 3315234}
   - 23: {fileID: 2383954}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lion_statue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - 114: {fileID: 11419398}
   - 65: {fileID: 6514624}
   - 54: {fileID: 5463428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DragonStatueDropPrefab
   m_TagString: Construction
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - 4: {fileID: 484906}
   - 135: {fileID: 13510716}
   - 114: {fileID: 11465550}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 420600}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lion_Statue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,6 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638b2891cae201c47b59d9ed653c1ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myName: Dragon
+  upgradeCost: 200
   maxHealth: 100
   curHealth: 100
   isKillable: 0

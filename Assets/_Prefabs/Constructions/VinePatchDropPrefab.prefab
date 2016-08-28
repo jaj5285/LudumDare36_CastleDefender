@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11456682}
   - 114: {fileID: 11409958}
   - 54: {fileID: 5411968}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VinePatchDropPrefab
   m_TagString: Construction
   m_Icon: {fileID: 0}
@@ -56,6 +56,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638b2891cae201c47b59d9ed653c1ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myName: Vine
+  upgradeCost: 50
   maxHealth: 100
   curHealth: 100
   isKillable: 0

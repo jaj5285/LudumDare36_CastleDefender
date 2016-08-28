@@ -3,9 +3,11 @@ using System.Collections;
 
 public class Construction : MonoBehaviour {
 
-	// TODO: Write in collision detection for Player upgrade interaction
-
-	public float maxHealth = 100f;	// [0, inf]
+    // TODO: Write in collision detection for Player upgrade interaction
+    
+    public string myName = "Construction---";
+    public float upgradeCost; // how much money for the next upgrade
+    public float maxHealth = 100f;	// [0, inf]
 	public float curHealth = 100f;	// [0, maxHealth]
 
 	public bool isKillable = true;

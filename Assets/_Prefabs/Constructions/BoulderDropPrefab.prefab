@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3329612}
   - 23: {fileID: 2304584}
   - 64: {fileID: 6441894}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Construction
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ GameObject:
   - 54: {fileID: 5435630}
   - 114: {fileID: 11487868}
   - 135: {fileID: 13522444}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoulderDropPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,8 +132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638b2891cae201c47b59d9ed653c1ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myName: Bramble
+  upgradeCost: 55
   maxHealth: 100
   curHealth: 100
+  isKillable: 1
 --- !u!135 &13522444
 SphereCollider:
   m_ObjectHideFlags: 1

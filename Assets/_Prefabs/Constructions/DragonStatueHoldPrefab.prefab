@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 451158}
   - 33: {fileID: 3396884}
   - 23: {fileID: 2382954}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lion_statue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 485122}
   - 33: {fileID: 3314632}
   - 23: {fileID: 2322804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lion_statue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - 114: {fileID: 11487268}
   - 114: {fileID: 11409098}
   - 65: {fileID: 6586742}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DragonStatueHoldPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - 4: {fileID: 404400}
   - 33: {fileID: 3341940}
   - 23: {fileID: 2358074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - 4: {fileID: 465210}
   - 33: {fileID: 3311666}
   - 23: {fileID: 2390692}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 407848}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BadPlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431528}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GoodPlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,8 +376,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638b2891cae201c47b59d9ed653c1ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myName: Construction---
+  upgradeCost: 0
   maxHealth: 100
   curHealth: 100
+  isKillable: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

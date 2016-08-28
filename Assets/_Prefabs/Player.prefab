@@ -2749,7 +2749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd47840d4d2c7245bfcf0da5f1be9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myName: spell
+  myName: Rod
   isActive: 0
   upgradeCost: 0
   level: 0
@@ -2791,7 +2791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2197f16214efd9499add37d1373fdcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myName: spell
+  myName: Flamethrower
   isActive: 0
   upgradeCost: 0
   level: 1

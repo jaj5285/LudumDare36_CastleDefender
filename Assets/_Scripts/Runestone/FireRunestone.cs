@@ -11,17 +11,17 @@ public class FireRunestone : Runestone
         //spellObj = GameObject.Find("PlayerFlamethrower");
 
 
-        interactText = "(Y) Interact";
-        cancelText = "(Y) Cancel";
+        //interactText = "(Y) Interact";
+        //cancelText = "(Y) Cancel";
 
-        Flamethrower flamethrower = worldController.GetComponent<WorldController>().PlayerObj.GetComponent<TP_Status>().flamethrowerObj.GetComponent<Flamethrower>();
+        //Flamethrower flamethrower = worldController.GetComponent<WorldController>().PlayerObj.GetComponent<TP_Status>().flamethrowerObj.GetComponent<Flamethrower>();
 
-        spellText = "(X) Buy Flamethrower $" + flamethrower.upgradeCost;
-        constructionText = "   \n  (B) Buy Dragon $???";
-        shopText = spellText + constructionText;
+        //spellText = "(X) Buy Flamethrower $" + flamethrower.upgradeCost;
+        //constructionText = "   \n  (B) Buy Dragon $???";
+        //shopText = spellText + constructionText;
 
-        interactTextObj.text = interactText;
-        shopTextObj.text = shopText;
+        //interactTextObj.text = interactText;
+        //shopTextObj.text = shopText;
     }
 
     //public override void BuyConstruction()

@@ -11,7 +11,7 @@ GameObject:
   - 54: {fileID: 5496620}
   - 135: {fileID: 13595470}
   - 114: {fileID: 11464282}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoulderHoldPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ GameObject:
   - 4: {fileID: 427816}
   - 33: {fileID: 3342442}
   - 23: {fileID: 2397596}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BadModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - 4: {fileID: 473782}
   - 33: {fileID: 3339692}
   - 23: {fileID: 2346306}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GoodModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,6 +185,7 @@ MonoBehaviour:
   goodChild: {fileID: 189968}
   badChild: {fileID: 146686}
   goodPlace: 1
+  rendInChildren: 0
 --- !u!135 &13595470
 SphereCollider:
   m_ObjectHideFlags: 1
