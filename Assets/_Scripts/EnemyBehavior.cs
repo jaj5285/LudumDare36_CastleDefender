@@ -6,8 +6,11 @@ public class EnemyBehavior : MonoBehaviour {
 	// TODO: Temp for Testing
 	public Material NormalMaterial;
 	public Material AttackMaterial;
+	public Material DoAttackMaterial;
 
-	public GameObject target;
+	public float attackDamage = 10f;
+	public float attackInterval = 2f;
+	public float attackDuration = 0.5f;
 
 	public GameObject prevNode;
 	public GameObject nextNode;
@@ -15,6 +18,7 @@ public class EnemyBehavior : MonoBehaviour {
 	private TrackNode prevNodeCode;
 	private TrackNode nextNodeCode;
 
+	public GameObject curDestination;
 	public GameObject curTarget;
 
 	public float travelSpeed;			// units per second
@@ -23,56 +27,71 @@ public class EnemyBehavior : MonoBehaviour {
 	public float distToNextNode = 1f;	// (0, inf]
 
 	public bool isAttacking = false;
-	public float attackDistance = 10f;
 
 	void Start () {
 		this.prevNodeCode = this.prevNode.GetComponent<TrackNode> ();
 		this.selectNextNode ();
-		this.selectTarget ();
+		this.selectDestination ();
 	}
 
 	void FixedUpdate () {
-		
-
-
-		if (isAttacking) {
-			if (this.curTarget == null || Vector3.Distance (this.transform.position, this.curTarget.transform.position) >= this.attackDistance) {
-				// Transition out of Attack State
-				this.GetComponent<Renderer>().material = NormalMaterial;
-				this.isAttacking = false;
-			}
-			// Do Attack?
-
+		if (this.isAttacking) {
+			if (this.curTarget == null) { this.removeTarget (); }
 		} else {
-			if (curTarget != null && Vector3.Distance (this.transform.position, this.curTarget.transform.position) < this.attackDistance) {
-				// Transition to Attack State
-				this.GetComponent<Renderer>().material = AttackMaterial;
-				this.isAttacking = true;
-			}
-
-			this.curProgress = Mathf.Clamp01 (this.curProgress + (travelSpeed / distToNextNode) * Time.deltaTime);
-
-			if (this.curProgress == 1f) {
-				this.selectNextNode ();
-			}
-
-			if (curTarget == null) {
-				this.selectTarget ();
-			}
-
-			this.transform.LookAt (this.nextNode.transform.position);
-			Vector3 idealPos = Vector3.Lerp (this.prevNode.transform.position, this.nextNode.transform.position, this.curProgress);
-
-			this.transform.position = idealPos;
+			this.moveUnitTowardDest ();
 		}
 	}
 
-	private void selectTarget () {
+	public void setTarget (GameObject target) {
+		this.isAttacking = true;
+		this.curTarget = target;
+		StartCoroutine (this.handleAttack ());
+	}
+
+	public void removeTarget () {
+		this.isAttacking = false;
+	}
+
+	private void moveUnitTowardDest () {
+		this.curProgress = Mathf.Clamp01 (this.curProgress + (travelSpeed / distToNextNode) * Time.deltaTime);
+
+		if (this.curProgress == 1f) {
+			this.selectNextNode ();
+		}
+
+		if (curDestination == null) {
+			this.selectDestination ();
+		}
+
+		this.transform.LookAt (this.nextNode.transform.position);
+		Vector3 idealPos = Vector3.Lerp (this.prevNode.transform.position, this.nextNode.transform.position, this.curProgress);
+
+		this.transform.position = idealPos;
+	}
+
+	IEnumerator handleAttack () {
+		// Transition to Attak State
+		this.GetComponent<Renderer>().material = AttackMaterial;
+
+		// Repeat Attack Actions
+		while (this.isAttacking) {
+			this.GetComponent<Renderer>().material = DoAttackMaterial;
+			yield return new WaitForSeconds (this.attackDuration);
+			this.curTarget.GetComponent<Construction> ().receiveAttack (this.attackDamage);
+			this.GetComponent<Renderer>().material = AttackMaterial;
+			yield return new WaitForSeconds (this.attackInterval);
+		}
+
+		// Exit Attack State
+		this.GetComponent<Renderer>().material = NormalMaterial;
+	}
+
+	private void selectDestination () {
 		GameObject[] targets = GameObject.FindGameObjectsWithTag ("Target");
 		if (targets.Length == 0) {
-			this.curTarget = null;
+			this.curDestination = null;
 		} else {
-			this.curTarget = targets [Random.Range (0, targets.Length)];
+			this.curDestination = targets [Random.Range (0, targets.Length)];
 		}
 	}
 
@@ -82,15 +101,15 @@ public class EnemyBehavior : MonoBehaviour {
 			this.prevNodeCode = this.nextNodeCode;
 		}
 
-		if (this.curTarget != null) {
-			float minDist = Vector3.Distance (this.curTarget.transform.position, this.prevNodeCode.connectedNodes [0].transform.position);
+		if (this.curDestination != null) {
+			float minDist = Vector3.Distance (this.curDestination.transform.position, this.prevNodeCode.connectedNodes [0].transform.position);
 			int minDistIndex = 0;
 
 			for (int i = 1; i < this.prevNodeCode.connectedNodes.Length; i++) {
 
 				// Find the connected Node that is closest to the current target
-				if (minDist > Vector3.Distance (this.curTarget.transform.position, this.prevNodeCode.connectedNodes [i].transform.position)) {
-					minDist = Vector3.Distance (this.curTarget.transform.position, this.prevNodeCode.connectedNodes [i].transform.position);
+				if (minDist > Vector3.Distance (this.curDestination.transform.position, this.prevNodeCode.connectedNodes [i].transform.position)) {
+					minDist = Vector3.Distance (this.curDestination.transform.position, this.prevNodeCode.connectedNodes [i].transform.position);
 					minDistIndex = i;
 				}
 
