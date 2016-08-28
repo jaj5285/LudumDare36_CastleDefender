@@ -97,17 +97,18 @@ public class TP_Controller : MonoBehaviour {
             Jump();
         }
 
-        if (Input.GetKey(KeyCode.Z))//(Input.GetButton("W"))
+        //hold flamethrower
+        if ((Input.GetKey(KeyCode.Z) || Input.GetButton("XboxB")) && TP_Status._instance.hasFlamethrower)
         {
             ActivateFlamethrower(true);
         }
-        if (Input.GetKeyUp(KeyCode.Z) && TP_Status._instance.hasFlamethrower)
+        //stop flamethrower
+        if ((Input.GetKeyUp(KeyCode.Z) || Input.GetButtonUp("XboxB")) && TP_Status._instance.hasFlamethrower)
         {
             ActivateFlamethrower(false);
         }
-        if (Input.GetKeyDown(KeyCode.X))//(Input.GetButton("W"))
+        if (Input.GetKeyDown(KeyCode.X) || Input.GetButtonDown("XboxA"))//(Input.GetButton("W"))
         {
-            Debug.Log("Pressed X!");
             ActivateRod();
         }
     }
@@ -121,11 +122,12 @@ public class TP_Controller : MonoBehaviour {
 			Debug.Log ("TODO: reset camera - see commented out link");
 			// http://answers.unity3d.com/questions/405954/3rd-person-free-camera-based-in-3d-buzzs-tutorial.html
 			TP_Camera._instance.PutCameraBehindCharacter();
-		}		if (Input.GetAxis("Trigger Left")!=0)
+		}
+        if (Input.GetAxis("Trigger Left")!=0 || Input.GetKey(KeyCode.L))
 		{
 			TP_Camera._instance.RotateCameraLeft();
 		}
-		if (Input.GetAxis("Trigger Right")!=0)
+		if (Input.GetAxis("Trigger Right")!=0 || Input.GetKey(KeyCode.J))
 		{
 			TP_Camera._instance.RotateCameraRight();
 		}
