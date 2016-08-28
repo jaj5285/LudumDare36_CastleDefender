@@ -9,12 +9,51 @@ public class WorldController : MonoBehaviour
     public Text moneyText;
 
     public GameObject PlayerObj;
+    public GameObject runestoneHealthContainer;
+    public GameObject runestoneHealthPrefab;
+
+    public GameObject[] runestones;
+
 
     void Awake()
     {
         _instance = this;
+
+        // Runestone health
+       DisplayRuneStoneHealth();
+
     }
-    
+
+    void Update()
+    {
+        // Game Over
+    }
+
+    // TODO: So much hack. fix it
+    public void DisplayRuneStoneHealth()
+    {
+        Debug.Log("RuneStones Updating");
+
+        // Destroy all current texts
+        foreach (Transform child in runestoneHealthContainer.transform)
+        {
+            Debug.Log("test");
+            Destroy(child.gameObject);
+        }
+
+        // Just recreate all current texts
+        foreach (GameObject rs in runestones)
+        {
+            // Make Texts with health of each
+            GameObject rsHealthObj = Instantiate(runestoneHealthPrefab);
+            rsHealthObj.transform.parent = runestoneHealthContainer.transform;
+            Vector3 scale = new Vector3(1, 1, 1);
+            rsHealthObj.GetComponent<RectTransform>().localScale = scale;
+            Text m_nameText = rsHealthObj.GetComponent<Text>();
+            m_nameText.text = "HP " + rs.GetComponent<Construction>().curHealth;
+        }
+    }
+
     public void AddMoney(float amount)
     {
         // Add money

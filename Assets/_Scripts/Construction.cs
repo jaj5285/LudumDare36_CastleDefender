@@ -11,6 +11,14 @@ public class Construction : MonoBehaviour {
 	public float curHealth = 100f;	// [0, maxHealth]
 
 	public bool isKillable = true;
+    public bool isRunestone = false;
+
+    public GameObject worldController;
+
+    void Awake()
+    {
+        worldController = GameObject.Find("WorldController");
+    }
 
 	void OnTriggerEnter (Collider other) {
 		if (this.isKillable && other.gameObject.tag == "Enemy") {
@@ -22,9 +30,20 @@ public class Construction : MonoBehaviour {
 	public void receiveAttack (float damage) {
 		this.curHealth -= damage;
 
-		if (this.curHealth < 0f) {
-			// Do Destroy actions
-			Destroy(this.gameObject, 1f);
+        if (isRunestone)
+        {
+            worldController.GetComponent<WorldController>().DisplayRuneStoneHealth();
+        }
+
+        if (this.curHealth <= 0f)
+        {
+            this.curHealth = 0;
+            if (isRunestone)
+            {
+                worldController.GetComponent<WorldController>().DisplayRuneStoneHealth();
+            }
+            // Do Destroy actions
+            Destroy(this.gameObject, 1f);
 		}
 	}
 }
