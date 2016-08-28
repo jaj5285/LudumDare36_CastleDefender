@@ -11,7 +11,10 @@ public enum AttackType
 
 public class Attack : MonoBehaviour
 {
+    public static Attack _instance;
+
     public bool isActive;
+    public float upgradeCost; // how much money for the next upgrade
     public int level;
     public float power;
     public float duration;
@@ -23,9 +26,10 @@ public class Attack : MonoBehaviour
 
     void Awake()
     {
+        _instance = this;
         recoveryBooster = 1;
         recoverySlower = 1;
-        level = 1;
+        level = 0;
         Disactivate();
     }
 

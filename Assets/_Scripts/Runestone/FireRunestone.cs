@@ -2,22 +2,22 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class FireRunestone : Runestone {
+public class FireRunestone : Runestone
+{
 
     public string spellText;
     public string constructionText;
-
-    public float flamethrowerCost_Lv1 = 40;
-    public float flamethrowerCost_Lv2 = 100;
-    public float dragonCost_Lv1 = 500;
-
-	void Start ()
+    
+    void Start()
     {
         interactText = "(Y) Interact";
         cancelText = "(Y) Cancel";
 
-        spellText = "(X) Buy Flamethrower $" + flamethrowerCost_Lv1;
-        constructionText = "   \n  (B) Buy Dragon $"+ dragonCost_Lv1;
+
+        Flamethrower flamethrower = worldController.GetComponent<WorldController>().PlayerObj.GetComponent<TP_Status>().flamethrowerObj.GetComponent<Flamethrower>();
+
+        spellText = "(X) Buy Flamethrower $" + flamethrower.upgradeCost;
+        constructionText = "   \n  (B) Buy Dragon $???";
         shopText = spellText + constructionText;
 
         interactTextObj.text = interactText;
@@ -31,15 +31,18 @@ public class FireRunestone : Runestone {
     public override void BuySpell()
     {
         WorldController wc = worldController.GetComponent<WorldController>();
-        Debug.Log("Buy FIRE spell here ");
-        if (wc.money > flamethrowerCost_Lv1) // && player does not already have flamethrower
+        TP_Status tpStatus = worldController.GetComponent<WorldController>().PlayerObj.GetComponent<TP_Status>();
+        Flamethrower flamethrower = tpStatus.flamethrowerObj.GetComponent<Flamethrower>();
+
+        if (wc.money >= flamethrower.upgradeCost)
         {
-            wc.SubtractMoney(flamethrowerCost_Lv1);
-            // TODO: Enable flamethower
-            Debug.Log("TODO: Enable flamethower");
+            int newLevel = flamethrower.level++;
+
+            wc.SubtractMoney(newLevel);
+            flamethrower.Upgrade(newLevel);
 
             // Update TextMesh
-            spellText = "(X) Upgrade Flamethrower $" + flamethrowerCost_Lv2;
+            spellText = "(X) Flamethrower Lv"+ (newLevel+1) +" $" + flamethrower.upgradeCost;
             shopText = spellText + constructionText;
             shopTextObj.text = shopText;
         }

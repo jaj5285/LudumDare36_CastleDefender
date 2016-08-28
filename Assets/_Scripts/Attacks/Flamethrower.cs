@@ -3,9 +3,13 @@ using System.Collections;
 
 public class Flamethrower : Attack
 {
+    public static Flamethrower _instance;
+
     void Start()
     {
-        level = 1;
+        _instance = this;
+        level = 0;
+        upgradeCost = 50;
         power = 2;
         duration = 5;
         timeLeft = duration;
@@ -14,6 +18,34 @@ public class Flamethrower : Attack
         isActive = false;
         recoverySlower = 2;
         recoveryBooster = 1;
+    }
+
+    public void Upgrade(int level)
+    {
+        switch (level)
+        {
+            case 1:
+                level = 1;
+                upgradeCost = 100;
+                power = 2;
+                duration = 5;
+                timeLeft = duration;
+                recoverySlower = 2;
+                recoveryBooster = 1;
+                break;
+            case 2:
+                level = 2;
+                upgradeCost = 250;
+                power = 3;
+                duration = 8;
+                timeLeft = duration;
+                recoverySlower = 2;
+                recoveryBooster = 1.5f;
+                break;
+            default:
+                Debug.Log("No upgrade level selected!");
+                break;
+        }
     }
 
     public override void Activate()

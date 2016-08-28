@@ -16,8 +16,12 @@ public class TP_Status : MonoBehaviour {
     public InteractionState interactionState;
 
     public bool isInRangeOfRunestone = false;
-    public bool hasFlamethrower = false;
-    
+
+    // External Objects
+    public GameObject flamethrowerObj;
+    public GameObject rodObj;
+    public GameObject currRunestoneInRange;
+
     void Awake () {
         _instance = this;
         interactionState = InteractionState.Default;

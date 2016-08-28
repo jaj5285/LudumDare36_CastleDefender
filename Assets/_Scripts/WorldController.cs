@@ -8,6 +8,8 @@ public class WorldController : MonoBehaviour
     public float money = 0;
     public Text moneyText;
 
+    public GameObject PlayerObj;
+
     void Awake()
     {
         _instance = this;

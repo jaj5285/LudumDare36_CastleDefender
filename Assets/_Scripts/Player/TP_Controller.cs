@@ -12,12 +12,7 @@ public class TP_Controller : MonoBehaviour {
 	public static TP_Controller _instance;
 
 	public float deadZone = 0.1f; // holds dead space (AKA responsiveness to input)
-
-    // External Objects
-    public GameObject flamethrowerObj;
-    public GameObject rodObj;
-
-    public GameObject currRunestoneInRange;
+    
 
     void Awake() 
 	{
@@ -26,7 +21,8 @@ public class TP_Controller : MonoBehaviour {
 
 		// Use Exsiting Or Create New Main Camera
 		TP_Camera.UseExisitingOrCreateNewMainCamera();
-	}
+
+    }
 
 	void Update() 
 	{
@@ -108,17 +104,17 @@ public class TP_Controller : MonoBehaviour {
         {
             Jump();
         }
-        if ((Input.GetKey(KeyCode.L) || Input.GetButton("XboxB")) && TP_Status._instance.hasFlamethrower)
+        if ((Input.GetKey(KeyCode.L) || Input.GetButton("XboxB")) && TP_Status._instance.flamethrowerObj.GetComponent<Flamethrower>().level > 0)
         {
             // Use/Hold down for flamethrower
             ActivateFlamethrower(true);
         }
-        if ((Input.GetKeyUp(KeyCode.L) || Input.GetButtonUp("XboxB")) && TP_Status._instance.hasFlamethrower)
+        if ((Input.GetKeyUp(KeyCode.L) || Input.GetButtonUp("XboxB")) && TP_Status._instance.flamethrowerObj.GetComponent<Flamethrower>().level > 0)
         {
             // Stop flamethrower
             ActivateFlamethrower(false);
         }
-        if (Input.GetKeyDown(KeyCode.K) || Input.GetButtonDown("XboxX"))
+        if (Input.GetKeyDown(KeyCode.J) || Input.GetButtonDown("XboxX"))
         {
             // Use rod
             ActivateRod();
@@ -127,7 +123,7 @@ public class TP_Controller : MonoBehaviour {
         {
             // Activate Shop InteractionState
             TP_Status._instance.interactionState = InteractionState.Shop;
-            currRunestoneInRange.GetComponent<Runestone>().SetShopText(true);
+            TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetShopText(true);
         }
     }
 
@@ -140,19 +136,19 @@ public class TP_Controller : MonoBehaviour {
         if ((Input.GetKeyDown(KeyCode.L) || Input.GetButtonDown("XboxB")))
         {
             // Buy Construction
-            currRunestoneInRange.GetComponent<Runestone>().BuyConstruction();
+            TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().BuyConstruction();
         }
         if (Input.GetKeyDown(KeyCode.J) || Input.GetButtonDown("XboxX"))
         {
             // Buy Spell
-            currRunestoneInRange.GetComponent<Runestone>().BuySpell();
+            TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().BuySpell();
         }
         if ((Input.GetKeyDown(KeyCode.I) || Input.GetButtonDown("XboxY")) && TP_Status._instance.isInRangeOfRunestone)
         {
             // Cancel Shop InteractionState
             TP_Status._instance.interactionState = InteractionState.Default;
-            currRunestoneInRange.GetComponent<Runestone>().SetInteractText(true);
-            currRunestoneInRange.GetComponent<Runestone>().SetShopText(false);
+            TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetInteractText(true);
+            TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetShopText(false);
         }
     }
     void HandleConstructionInput()
@@ -178,11 +174,11 @@ public class TP_Controller : MonoBehaviour {
 			// http://answers.unity3d.com/questions/405954/3rd-person-free-camera-based-in-3d-buzzs-tutorial.html
 			TP_Camera._instance.PutCameraBehindCharacter();
 		}
-        if (Input.GetAxis("Trigger Left")!=0 || Input.GetKey(KeyCode.L))
+        if (Input.GetAxis("Trigger Left")!=0 || Input.GetKey(KeyCode.O))
 		{
 			TP_Camera._instance.RotateCameraLeft();
 		}
-		if (Input.GetAxis("Trigger Right")!=0 || Input.GetKey(KeyCode.J))
+		if (Input.GetAxis("Trigger Right")!=0 || Input.GetKey(KeyCode.U))
 		{
 			TP_Camera._instance.RotateCameraRight();
 		}
@@ -201,8 +197,8 @@ public class TP_Controller : MonoBehaviour {
 
     void ActivateFlamethrower(bool activate)
     {
-        Flamethrower flamethrower = flamethrowerObj.GetComponent<Flamethrower>();
-        if (activate)
+        Flamethrower flamethrower = TP_Status._instance.flamethrowerObj.GetComponent<Flamethrower>();
+        if (activate && flamethrower.level > 0)
         {
             flamethrower.Activate();
         }
@@ -214,7 +210,7 @@ public class TP_Controller : MonoBehaviour {
 
     void ActivateRod()
     {
-        RodAttack rod = rodObj.GetComponent<RodAttack>();
+        RodAttack rod = TP_Status._instance.rodObj.GetComponent<RodAttack>();
         rod.ToggleActivatation();
     }
 
@@ -224,7 +220,7 @@ public class TP_Controller : MonoBehaviour {
         if (col.gameObject.CompareTag("Target"))
         {
             TP_Status._instance.isInRangeOfRunestone = true;
-            currRunestoneInRange = col.gameObject;
+            TP_Status._instance.currRunestoneInRange = col.gameObject;
         }
     }
 
@@ -236,7 +232,7 @@ public class TP_Controller : MonoBehaviour {
 
             // Reset InteractionState in case it's set to Shop InteractionState
             TP_Status._instance.interactionState = InteractionState.Default;
-            currRunestoneInRange = null;
+            TP_Status._instance.currRunestoneInRange = null;
         }
     }
 }
