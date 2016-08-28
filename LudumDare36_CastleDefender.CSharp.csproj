@@ -68,28 +68,36 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_Scripts\Attack.cs" />
+    <Compile Include="Assets\_Scripts\Attacks\Attack.cs" />
+    <Compile Include="Assets\_Scripts\Attacks\Flamethrower.cs" />
+    <Compile Include="Assets\_Scripts\Attacks\RodAttack.cs" />
     <Compile Include="Assets\_Scripts\BendGrass.cs" />
+    <Compile Include="Assets\_Scripts\BrambleGen.cs" />
+    <Compile Include="Assets\_Scripts\BuilderManager.cs" />
     <Compile Include="Assets\_Scripts\Construction.cs" />
     <Compile Include="Assets\_Scripts\DebugDraw.cs" />
     <Compile Include="Assets\_Scripts\EnemyBehavior.cs" />
     <Compile Include="Assets\_Scripts\EnemyManager.cs" />
-    <Compile Include="Assets\_Scripts\Flamethrower.cs" />
     <Compile Include="Assets\_Scripts\LookAtCamera.cs" />
+    <Compile Include="Assets\_Scripts\Placer.cs" />
     <Compile Include="Assets\_Scripts\Player\Helper.cs" />
     <Compile Include="Assets\_Scripts\Player\TP_Animator.cs" />
     <Compile Include="Assets\_Scripts\Player\TP_Camera.cs" />
     <Compile Include="Assets\_Scripts\Player\TP_Controller.cs" />
     <Compile Include="Assets\_Scripts\Player\TP_Motor.cs" />
     <Compile Include="Assets\_Scripts\Player\TP_Status.cs" />
-    <Compile Include="Assets\_Scripts\RodAttack.cs" />
-    <Compile Include="Assets\_Scripts\Runestone.cs" />
+    <Compile Include="Assets\_Scripts\Runestone\FireRunestone.cs" />
+    <Compile Include="Assets\_Scripts\Runestone\Runestone.cs" />
     <Compile Include="Assets\_Scripts\TrackNode.cs" />
     <Compile Include="Assets\_Scripts\WorldController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
+    <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
+    <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
+    <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
     <None Include="Assets\_Shaders\WavingGrass.shader" />
     <None Include="Assets\_Shaders\WavingGrassBillboard.shader" />
   </ItemGroup>

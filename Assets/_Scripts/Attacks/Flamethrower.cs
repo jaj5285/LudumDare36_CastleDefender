@@ -26,7 +26,6 @@ public class Flamethrower : Attack
             {
                 child.gameObject.SetActive(true);
             }
-
         }
     }
 

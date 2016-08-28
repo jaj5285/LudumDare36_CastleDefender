@@ -37,7 +37,6 @@ public class Attack : MonoBehaviour
             timeLeft -= Time.deltaTime;
             if (timeLeft <= 0)
             {
-                Debug.Log(timeLeft);
                 Disactivate();
             }
         }

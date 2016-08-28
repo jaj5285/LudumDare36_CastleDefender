@@ -6,7 +6,7 @@ public class RodAttack : Attack
     void Start()
     {
         level = 1;
-        power = 5;
+        power = 2;
         duration = 0.25f;
         timeLeft = duration;
         attackType = AttackType.Fire;

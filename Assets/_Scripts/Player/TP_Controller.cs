@@ -127,7 +127,7 @@ public class TP_Controller : MonoBehaviour {
         {
             // Activate Shop InteractionState
             TP_Status._instance.interactionState = InteractionState.Shop;
-            currRunestoneInRange.GetComponent<Runestone>().SetInteractText(false);
+            currRunestoneInRange.GetComponent<Runestone>().SetShopText(true);
         }
     }
 
@@ -140,16 +140,19 @@ public class TP_Controller : MonoBehaviour {
         if ((Input.GetKeyDown(KeyCode.L) || Input.GetButtonDown("XboxB")))
         {
             // Buy Construction
+            currRunestoneInRange.GetComponent<Runestone>().BuyConstruction();
         }
-        if (Input.GetKeyDown(KeyCode.J) || Input.GetButton("XboxX"))
+        if (Input.GetKeyDown(KeyCode.J) || Input.GetButtonDown("XboxX"))
         {
             // Buy Spell
+            currRunestoneInRange.GetComponent<Runestone>().BuySpell();
         }
         if ((Input.GetKeyDown(KeyCode.I) || Input.GetButtonDown("XboxY")) && TP_Status._instance.isInRangeOfRunestone)
         {
             // Cancel Shop InteractionState
             TP_Status._instance.interactionState = InteractionState.Default;
             currRunestoneInRange.GetComponent<Runestone>().SetInteractText(true);
+            currRunestoneInRange.GetComponent<Runestone>().SetShopText(false);
         }
     }
     void HandleConstructionInput()

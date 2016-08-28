@@ -31,7 +31,7 @@ public class EnemyBehavior : MonoBehaviour
     public bool isAttacking = false;
 
     // Statuses
-    public float health = 50;
+    public float health = 25;
     public float goldDrop = 50;
     public AttackType resistance = AttackType.Fire;
     public float resistanceMuter = 2; // Never set this to 0! Higher means less damage taken when resistant to attacktype

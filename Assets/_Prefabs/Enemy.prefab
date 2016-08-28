@@ -195,7 +195,7 @@ MonoBehaviour:
   curProgress: 0
   distToNextNode: 1
   isAttacking: 0
-  health: 100
+  health: 20
   goldDrop: 50
   resistance: 0
   resistanceMuter: 2
