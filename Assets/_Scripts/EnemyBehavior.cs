@@ -25,6 +25,9 @@ public class EnemyBehavior : MonoBehaviour
 
     public bool isAttacking = false;
 
+	public float brambleSlowRatio = 0.5f; // [0, 1]
+	public bool isBrambleSlowed = false;
+
     // Statuses
     public float health = 25;
     public float goldDrop = 50;
@@ -126,6 +129,7 @@ public class EnemyBehavior : MonoBehaviour
         while (this.isAttacking)
         {
 			this.GetComponentsInChildren<Animation>()[0].Play("WK_heavy_infantry_08_attack_B");
+
             yield return new WaitForSeconds(this.attackDuration);
 			if (this.curTarget != null) {
 				this.curTarget.GetComponent<Construction> ().receiveAttack (this.attackDamage);

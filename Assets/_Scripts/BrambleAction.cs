@@ -3,18 +3,15 @@ using System.Collections;
 
 public class BrambleAction : MonoBehaviour {
 
-	public float brambleMoveSpeed = 2.5f;
-	public float standardMoveSpeed = 5f;
-
 	void OnTriggerStay (Collider other) {
 		if (other.tag == "Enemy") {
-			other.GetComponent<EnemyBehavior> ().travelSpeed = brambleMoveSpeed;
+			other.GetComponent<EnemyBehavior> ().isBrambleSlowed = true;
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (other.tag == "Enemy") {
-			other.GetComponent<EnemyBehavior> ().travelSpeed = standardMoveSpeed;
+			other.GetComponent<EnemyBehavior> ().isBrambleSlowed = false;
 		}
 	}
 }
