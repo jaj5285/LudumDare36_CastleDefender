@@ -56,7 +56,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (this.isAttacking)
         {
-            if (this.curTarget == null) { this.removeTarget(); }
+			if (this.curTarget == null || !this.curTarget.active) { this.removeTarget(); }
         }
         else {
             this.moveUnitTowardDest();

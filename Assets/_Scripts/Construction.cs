@@ -42,8 +42,11 @@ public class Construction : MonoBehaviour {
             {
                 worldController.GetComponent<WorldController>().DisplayRuneStoneHealth();
             }
+
             // Do Destroy actions
-            Destroy(this.gameObject, 1f);
+            //Destroy(this.gameObject, 1f);
+			this.tag = "Untagged";
+			this.gameObject.active = false;
 		}
 	}
 }
