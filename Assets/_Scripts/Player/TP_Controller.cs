@@ -12,12 +12,15 @@ public class TP_Controller : MonoBehaviour {
 	public static TP_Controller _instance;
 
 	public float deadZone = 0.1f; // holds dead space (AKA responsiveness to input)
-    
+
+    public AudioClip clickSound; // play this on interactions with UI
+    private AudioSource audioSource;
 
     void Awake() 
 	{
+        _instance = this;
 		_characterController = GetComponent<CharacterController>();
-		_instance = this;
+        audioSource = GetComponent<AudioSource>();
 
 		// Use Exsiting Or Create New Main Camera
 		TP_Camera.UseExisitingOrCreateNewMainCamera();
@@ -124,6 +127,10 @@ public class TP_Controller : MonoBehaviour {
             // Activate Shop InteractionState
             TP_Status._instance.interactionState = InteractionState.Shop;
             TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetShopText(true);
+            if (clickSound != null)
+            {
+                audioSource.PlayOneShot(clickSound, 1.0f);
+            }
         }
     }
 
@@ -149,6 +156,10 @@ public class TP_Controller : MonoBehaviour {
             TP_Status._instance.interactionState = InteractionState.Default;
             TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetInteractText(true);
             TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetShopText(false);
+            if (clickSound != null)
+            {
+                audioSource.PlayOneShot(clickSound, 1.0f);
+            }
         }
     }
     void HandleConstructionInput()

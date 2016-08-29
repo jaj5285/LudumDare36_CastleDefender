@@ -25,6 +25,9 @@ public class Attack : MonoBehaviour
     public float recoverySlower; // the higher this number, the slower the recovery
     public float recoveryBooster;
 
+    public AudioClip activateSound;
+    private AudioSource audioSource;
+
     void Awake()
     {
         _instance = this;
@@ -32,6 +35,7 @@ public class Attack : MonoBehaviour
         recoverySlower = 1;
         level = 0;
         Disactivate();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -69,6 +73,10 @@ public class Attack : MonoBehaviour
     {
         isActive = true;
         GetComponent<Renderer>().enabled = true;
+        if(activateSound != null)
+        {
+            audioSource.PlayOneShot(activateSound, 1.0f);
+        }
         //this.gameObject.SetActive(true);
     }
 

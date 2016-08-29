@@ -18,10 +18,16 @@ public class Runestone : MonoBehaviour {
     
     public string spellText;
     public string constructionText;
+    
+    public AudioClip buySound;
+    public AudioClip denySound;
+
+    private AudioSource audioSource;
 
     void Awake()
     {
         worldController = GameObject.Find("WorldController");
+        audioSource = GetComponent<AudioSource>();
 
         interactTextObj.gameObject.SetActive(false);
         shopTextObj.gameObject.SetActive(false);
@@ -59,6 +65,18 @@ public class Runestone : MonoBehaviour {
             tpStatus.interactionState = InteractionState.Construct;
             SetInteractText(true);
             SetShopText(false);
+
+            if (buySound != null)
+            {
+                audioSource.PlayOneShot(buySound, 1.0f);
+            }
+        }
+        else
+        {
+            if (denySound != null)
+            {
+                audioSource.PlayOneShot(denySound, 0.8f);
+            }
         }
     }
 
@@ -86,6 +104,18 @@ public class Runestone : MonoBehaviour {
             tpStatus.interactionState = InteractionState.Default;
             SetInteractText(true);
             SetShopText(false);
+
+            if (buySound != null)
+            {
+                audioSource.PlayOneShot(buySound, 1.0f);
+            }
+        }
+        else
+        {
+            if (denySound != null)
+            {
+                audioSource.PlayOneShot(denySound, 0.5f);
+            }
         }
     }
 
