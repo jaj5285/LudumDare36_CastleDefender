@@ -14,7 +14,7 @@ GameObject:
   - 135: {fileID: 13556180}
   m_Layer: 8
   m_Name: bramble
-  m_TagString: Untagged
+  m_TagString: Construction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,8 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c8eea6b6ac7a644a88a6df694e6341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brambleMoveSpeed: 2.5
-  standardMoveSpeed: 5
+  brambleMoveSpeed: 1
+  standardMoveSpeed: 3
 --- !u!135 &13556180
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -102,7 +102,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
-      value: Untagged
+      value: Construction
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: brambleMoveSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: standardMoveSpeed
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

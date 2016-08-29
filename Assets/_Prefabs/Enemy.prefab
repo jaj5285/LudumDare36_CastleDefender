@@ -916,7 +916,7 @@ MonoBehaviour:
   nextNode: {fileID: 0}
   curDestination: {fileID: 0}
   curTarget: {fileID: 0}
-  travelSpeed: 5
+  travelSpeed: 3
   curProgress: 0
   distToNextNode: 1
   isAttacking: 0
@@ -1034,7 +1034,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: travelSpeed
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]

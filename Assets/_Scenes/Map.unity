@@ -135,7 +135,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 413326450}
+    m_TransformParent: {fileID: 886948162}
     m_Modifications:
     - target: {fileID: 415970, guid: aaa95547ef283d64bbc07523bf99d92d, type: 2}
       propertyPath: m_LocalPosition.x
@@ -513,10 +513,10 @@ MonoBehaviour:
   - {fileID: 1758532427}
   - {fileID: 811315896}
   - {fileID: 1231859144}
-  numEnemies: 25
-  waveStrength: 10
-  initialDelay: 15
-  spawnInterval: 30
+  numEnemies: 20
+  waveStrength: 5
+  initialDelay: 30
+  spawnInterval: 20
 --- !u!1001 &292966052
 Prefab:
   m_ObjectHideFlags: 0
@@ -3274,15 +3274,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 458240, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 232.2
+      value: 182.1
       objectReference: {fileID: 0}
     - target: {fileID: 458240, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 75.00458
+      value: 84.32
       objectReference: {fileID: 0}
     - target: {fileID: 458240, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 271.23
+      value: 269.1
       objectReference: {fileID: 0}
     - target: {fileID: 458240, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
       propertyPath: m_LocalRotation.x

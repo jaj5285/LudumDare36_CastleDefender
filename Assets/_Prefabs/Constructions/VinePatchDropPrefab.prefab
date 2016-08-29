@@ -13,7 +13,7 @@ GameObject:
   - 54: {fileID: 5411968}
   m_Layer: 8
   m_Name: VinePatchDropPrefab
-  m_TagString: Construction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,6 +61,8 @@ MonoBehaviour:
   maxHealth: 100
   curHealth: 100
   isKillable: 0
+  isRunestone: 0
+  worldController: {fileID: 0}
 --- !u!114 &11456682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,7 +99,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_TagString
-      value: Construction
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_UseGravity
