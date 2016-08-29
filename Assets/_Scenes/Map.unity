@@ -509,8 +509,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameRunning: 1
+  waveActive: 0
+  weakEnemyPrefab: {fileID: 113694, guid: b1fa3c13ec98a084a80aaa1ef53f8316, type: 2}
   enemyPrefab: {fileID: 159914, guid: b7cc13d7bbc055947a60fc19a5b01cde, type: 2}
-  bossPrefab: {fileID: 0}
+  bossPrefab: {fileID: 180264, guid: 9a8af3bca45948140bb6a16ad5e32795, type: 2}
   spawnNodes:
   - {fileID: 1758532427}
   - {fileID: 811315896}
@@ -519,9 +521,12 @@ MonoBehaviour:
   levelRadix: 5
   numLevels: 4
   numEnemies: 20
-  waveStrength: 3
+  waveStrength: 4
   initialDelay: 30
-  waveSpawnInterval: 20
+  waveSpawnInterval: 45
+  waveCheckInterval: 10
+  enemyCost: 4
+  weakEnemyCost: 3
 --- !u!1001 &292966052
 Prefab:
   m_ObjectHideFlags: 0
@@ -1278,6 +1283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: 500
   moneyText: {fileID: 1545601575}
+  totalHealth: 0
   PlayerObj: {fileID: 1713338620}
   runestoneHealthContainer: {fileID: 1242746661}
   runestoneHealthPrefab: {fileID: 114336, guid: 73950c7e9aa4a4d4eae90a1a3aef20a5,
