@@ -13,6 +13,8 @@ public class Construction : MonoBehaviour {
 	public bool isKillable = true;
     public bool isRunestone = false;
 
+    public AudioClip dropSound;
+
     public GameObject worldController;
 
     void Awake()

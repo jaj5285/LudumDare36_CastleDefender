@@ -13,6 +13,7 @@ public class TP_Controller : MonoBehaviour {
 
 	public float deadZone = 0.1f; // holds dead space (AKA responsiveness to input)
 
+    public AudioClip dropSound;
     public AudioClip clickSound; // play this on interactions with UI
     private AudioSource audioSource;
 
@@ -174,6 +175,11 @@ public class TP_Controller : MonoBehaviour {
                 TP_Status._instance.interactionState = InteractionState.Default;
                 TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetInteractText(true);
                 TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetShopText(false);
+             
+                if(dropSound != null)
+                {
+                    audioSource.PlayOneShot(dropSound, 1.0f);
+                }   
             }
         }
         //if ((Input.GetKeyDown(KeyCode.L) || Input.GetButtonDown("XboxB")))

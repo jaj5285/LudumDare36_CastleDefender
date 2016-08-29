@@ -75,7 +75,7 @@ public class Runestone : MonoBehaviour {
         {
             if (denySound != null)
             {
-                audioSource.PlayOneShot(denySound, 0.8f);
+                audioSource.PlayOneShot(denySound, 0.4f);
             }
         }
     }
@@ -114,7 +114,7 @@ public class Runestone : MonoBehaviour {
         {
             if (denySound != null)
             {
-                audioSource.PlayOneShot(denySound, 0.5f);
+                audioSource.PlayOneShot(denySound, 0.4f);
             }
         }
     }

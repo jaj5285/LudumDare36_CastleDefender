@@ -26,7 +26,7 @@ public class Attack : MonoBehaviour
     public float recoveryBooster;
 
     public AudioClip activateSound;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     void Awake()
     {
