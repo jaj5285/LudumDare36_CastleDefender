@@ -46,6 +46,7 @@ GameObject:
   - 135: {fileID: 13587446}
   - 114: {fileID: 11443942}
   - 114: {fileID: 11468106}
+  - 82: {fileID: 8289660}
   m_Layer: 8
   m_Name: Fire Runestone
   m_TagString: Target
@@ -297,6 +298,80 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142396}
   m_Mesh: {fileID: 4300000, guid: 34dbb946159c1b34a8b05477c46a18ee, type: 3}
+--- !u!82 &8289660
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142396}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!102 &10224906
 TextMesh:
   serializedVersion: 3
@@ -467,6 +542,7 @@ MonoBehaviour:
   curHealth: 100
   isKillable: 1
   isRunestone: 1
+  dropSound: {fileID: 8300000, guid: bb917742adc1b7349a877512509e79e1, type: 3}
   worldController: {fileID: 0}
 --- !u!114 &11468106
 MonoBehaviour:
@@ -490,6 +566,8 @@ MonoBehaviour:
   constructionIndex: 2
   spellText: 
   constructionText: 
+  buySound: {fileID: 8300000, guid: 87d1b33beb1620745bb5225ce814ad02, type: 3}
+  denySound: {fileID: 8300000, guid: 0c3c98271b4675740917cde2bae2d41c, type: 3}
 --- !u!114 &11480904
 MonoBehaviour:
   m_ObjectHideFlags: 1

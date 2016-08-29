@@ -60,6 +60,10 @@ public class Flamethrower : Attack
             {
                 child.gameObject.SetActive(true);
             }
+            if (activateSound != null)
+            {
+                audioSource.PlayOneShot(activateSound, 0.35f);
+            }
         }
     }
 

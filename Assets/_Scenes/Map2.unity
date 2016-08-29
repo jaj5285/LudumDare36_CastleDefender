@@ -508,15 +508,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c0f0d754ea8a5d428dc4087486da729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameRunning: 1
+  waveActive: 0
+  weakEnemyPrefab: {fileID: 0}
   enemyPrefab: {fileID: 159914, guid: b7cc13d7bbc055947a60fc19a5b01cde, type: 2}
+  bossPrefab: {fileID: 0}
   spawnNodes:
   - {fileID: 1758532427}
   - {fileID: 811315896}
   - {fileID: 1231859144}
+  waveNum: 0
+  levelRadix: 5
+  numLevels: 4
   numEnemies: 25
   waveStrength: 10
   initialDelay: 15
-  spawnInterval: 30
+  waveSpawnInterval: 45
+  waveCheckInterval: 10
+  enemyCost: 4
+  weakEnemyCost: 3
 --- !u!1001 &292966052
 Prefab:
   m_ObjectHideFlags: 0
@@ -1253,6 +1263,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 730348159}
   - 114: {fileID: 730348158}
+  - 82: {fileID: 730348160}
   m_Layer: 0
   m_Name: WorldController
   m_TagString: Untagged
@@ -1273,6 +1284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: 500
   moneyText: {fileID: 1545601575}
+  totalHealth: 0
   PlayerObj: {fileID: 1713338620}
   runestoneHealthContainer: {fileID: 1242746661}
   runestoneHealthPrefab: {fileID: 114336, guid: 73950c7e9aa4a4d4eae90a1a3aef20a5,
@@ -1292,6 +1304,80 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!82 &730348160
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 730348157}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 289d1ddae64136340b916dac0e156cb1, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1001 &746473429
 Prefab:
   m_ObjectHideFlags: 0
@@ -2587,7 +2673,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1001 &1291891431
 Prefab:
   m_ObjectHideFlags: 0
@@ -3302,7 +3388,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 458240, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 420356, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
       propertyPath: m_LocalRotation.x
