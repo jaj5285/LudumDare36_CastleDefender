@@ -7,6 +7,7 @@ public class WorldController : MonoBehaviour
     public static WorldController _instance;
     public float money = 100;
     public Text moneyText;
+    public float totalHealth; // determined by all the runestone's hp combined
 
     public GameObject PlayerObj;
     public GameObject runestoneHealthContainer;
@@ -20,11 +21,13 @@ public class WorldController : MonoBehaviour
         _instance = this;
 
         // Runestone health
-       DisplayRuneStoneHealth();
+        totalHealth = 0;
+        DisplayRuneStoneHealth();
+
         // Update text box
         moneyText.text = "Gold: " + money;
 
-    }
+}
 
     void Update()
     {
@@ -34,12 +37,10 @@ public class WorldController : MonoBehaviour
     // TODO: So much hack. fix it
     public void DisplayRuneStoneHealth()
     {
-        Debug.Log("RuneStones Updating");
-
+        float calculatedHealth =0; 
         // Destroy all current texts
         foreach (Transform child in runestoneHealthContainer.transform)
         {
-            Debug.Log("test");
             Destroy(child.gameObject);
         }
 
@@ -53,6 +54,20 @@ public class WorldController : MonoBehaviour
             rsHealthObj.GetComponent<RectTransform>().localScale = scale;
             Text m_nameText = rsHealthObj.GetComponent<Text>();
             m_nameText.text = "HP " + rs.GetComponent<Construction>().curHealth;
+
+            calculatedHealth += rs.GetComponent<Construction>().curHealth;
+        }
+        totalHealth = calculatedHealth;
+        checkGameOver();
+    }
+
+    public void checkGameOver()
+    {
+        if (totalHealth <= 0)
+        {
+            // Change to GameOver scene
+            Debug.Log("DEAD!");
+            Application.LoadLevel("GameOverScreen");
         }
     }
 
