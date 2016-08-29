@@ -21,6 +21,8 @@ public class WorldController : MonoBehaviour
 
         // Runestone health
        DisplayRuneStoneHealth();
+        // Update text box
+        moneyText.text = "Gold: " + money;
 
     }
 

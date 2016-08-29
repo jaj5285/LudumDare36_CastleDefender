@@ -73,7 +73,7 @@
     <Compile Include="Assets\_Scripts\Attacks\Attack.cs" />
     <Compile Include="Assets\_Scripts\Attacks\Flamethrower.cs" />
     <Compile Include="Assets\_Scripts\Attacks\RodAttack.cs" />
-    <Compile Include="Assets\_Scripts\Runestone\BendGrass.cs" />
+    <Compile Include="Assets\_Scripts\BendGrass.cs" />
     <Compile Include="Assets\_Scripts\BrambleAction.cs" />
     <Compile Include="Assets\_Scripts\BrambleGen.cs" />
     <Compile Include="Assets\_Scripts\BuilderManager.cs" />
