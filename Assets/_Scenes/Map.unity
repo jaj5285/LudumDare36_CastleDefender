@@ -169,6 +169,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11450888, guid: aaa95547ef283d64bbc07523bf99d92d, type: 2}
+      propertyPath: spellObj
+      value: 
+      objectReference: {fileID: 769689298}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aaa95547ef283d64bbc07523bf99d92d, type: 2}
   m_IsPrefabParent: 0
@@ -385,6 +389,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11465376, guid: 4971a46617ea6af46a2c6ebd03e542d3, type: 2}
+      propertyPath: spellObj
+      value: 
+      objectReference: {fileID: 1438852350}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4971a46617ea6af46a2c6ebd03e542d3, type: 2}
   m_IsPrefabParent: 0
@@ -507,6 +515,7 @@ MonoBehaviour:
   - {fileID: 1231859144}
   numEnemies: 25
   waveStrength: 10
+  initialDelay: 15
   spawnInterval: 30
 --- !u!1001 &292966052
 Prefab:
@@ -1345,6 +1354,10 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: d39d597ebf9fea44bbe39b78ba8c1b3e, type: 2}
   m_PrefabInternal: {fileID: 746473429}
+--- !u!1 &769689298 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 113726, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
+  m_PrefabInternal: {fileID: 1713338619}
 --- !u!1001 &801332482
 Prefab:
   m_ObjectHideFlags: 0
@@ -2905,6 +2918,10 @@ Transform:
   - {fileID: 378870364}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!1 &1438852350 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 142404, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
+  m_PrefabInternal: {fileID: 1713338619}
 --- !u!1001 &1475709132
 Prefab:
   m_ObjectHideFlags: 0

@@ -32,6 +32,7 @@ public class BuilderManager : MonoBehaviour {
 			curHeldObj = GameObject.Instantiate (this.holdPrefabs [itemIndex]);
 			curHeldObj.transform.SetParent (this.transform);
 			curHeldObj.transform.localPosition = this.holdOffset;
+			curHeldObj.transform.localRotation = Quaternion.identity;
 		}
 	}
 
