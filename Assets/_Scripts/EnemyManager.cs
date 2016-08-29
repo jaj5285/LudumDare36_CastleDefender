@@ -3,14 +3,23 @@ using System.Collections;
 
 public class EnemyManager : MonoBehaviour {
 
+	public bool GameRunning = true;
+
 	public GameObject enemyPrefab;
+	public GameObject bossPrefab;
+
 	public GameObject[] spawnNodes;
 
+	public int waveNum = 0;
+
+	public int levelRadix = 5;
+	public int numLevels = 4;
+
 	public int numEnemies = 25;
-	public int waveStrength = 10;
+	public int waveStrength = 3;
 
 	public float initialDelay = 15f;
-	public float spawnInterval = 5f;
+	public float waveSpawnInterval = 5f;
 
 	// Use this for initialization
 	void Start () {
@@ -26,26 +35,29 @@ public class EnemyManager : MonoBehaviour {
 
 		yield return new WaitForSeconds (initialDelay);
 
-		while (true) {	// While Wave is active etc.
+		while (GameRunning) {	// While Wave is active etc.
 
-			GameObject[] activeEnemies = GameObject.FindGameObjectsWithTag ("Enemy");
+			// Waits for clear board after end of level
+			if (this.waveNum % this.levelRadix == 0) {
+				GameObject[] activeEnemies = GameObject.FindGameObjectsWithTag ("Enemy");
 
-			if (activeEnemies.Length <= numEnemies) {
-				int randIndex = Random.Range (0, spawnNodes.Length);
-
-				for (int i = 0; i < this.waveStrength; i++) {
-					GameObject newEnemy = GameObject.Instantiate (enemyPrefab);
-
-					//Pick a spawn node "at random"
-
-					newEnemy.transform.position = spawnNodes [randIndex].transform.position;
-					newEnemy.GetComponent<EnemyBehavior> ().prevNode = spawnNodes [randIndex];
-
-					yield return new WaitForSeconds (Random.Range (0.2f, 1f));
+				if (activeEnemies.Length == 0) {
+					StartCoroutine (spawnWave ());
 				}
+			} else {
+				StartCoroutine (spawnWave ());
 			}
 
-			yield return new WaitForSeconds (spawnInterval);
+			yield return new WaitForSeconds (waveSpawnInterval);
 		}
+	}
+
+	IEnumerator spawnWave () {
+		this.waveNum++;
+
+		int waveModRadix = this.waveNum % this.levelRadix;
+		int quotRadix = this.waveNum / this.levelRadix;
+
+
 	}
 }

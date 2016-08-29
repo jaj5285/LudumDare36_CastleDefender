@@ -508,15 +508,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c0f0d754ea8a5d428dc4087486da729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameRunning: 1
   enemyPrefab: {fileID: 159914, guid: b7cc13d7bbc055947a60fc19a5b01cde, type: 2}
+  bossPrefab: {fileID: 0}
   spawnNodes:
   - {fileID: 1758532427}
   - {fileID: 811315896}
   - {fileID: 1231859144}
+  waveNum: 0
+  levelRadix: 5
+  numLevels: 4
   numEnemies: 20
-  waveStrength: 5
+  waveStrength: 3
   initialDelay: 30
-  spawnInterval: 20
+  waveSpawnInterval: 20
 --- !u!1001 &292966052
 Prefab:
   m_ObjectHideFlags: 0
@@ -1478,7 +1483,7 @@ Prefab:
     - target: {fileID: 11460688, guid: 376921a6bdab9bb4b9d4507b4e009e63, type: 2}
       propertyPath: connectedNodes.Array.data[0]
       value: 
-      objectReference: {fileID: 886948163}
+      objectReference: {fileID: 1778760314}
     - target: {fileID: 11460688, guid: 376921a6bdab9bb4b9d4507b4e009e63, type: 2}
       propertyPath: connectedNodes.Array.data[1]
       value: 
