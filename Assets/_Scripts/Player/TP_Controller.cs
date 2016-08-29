@@ -137,9 +137,6 @@ public class TP_Controller : MonoBehaviour {
         {
             // Buy Construction
             TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().BuyConstruction();
-            TP_Status._instance.interactionState = InteractionState.Construct;
-            TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetInteractText(true);
-            TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetShopText(false);
         }
         if (Input.GetKeyDown(KeyCode.J) || Input.GetButtonDown("XboxX"))
         {

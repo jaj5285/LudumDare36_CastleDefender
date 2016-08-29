@@ -48,18 +48,24 @@ public class Runestone : MonoBehaviour {
     public void BuyConstruction()
     {
         WorldController wc = worldController.GetComponent<WorldController>();
+        TP_Status tpStatus = wc.PlayerObj.GetComponent<TP_Status>();
         Construction construction = wc.PlayerObj.GetComponent<BuilderManager>().dropPrefabs[constructionIndex].GetComponent<Construction>();
         if (wc.money >= construction.upgradeCost)
         {
-            Debug.Log("Buy FIRE construction here ");
+            wc.SubtractMoney(construction.upgradeCost);
             BuilderManager bm = worldController.GetComponent<WorldController>().PlayerObj.GetComponent<BuilderManager>();
-            bm.pickupItem(constructionIndex);            
+            bm.pickupItem(constructionIndex);
+
+            tpStatus.interactionState = InteractionState.Construct;
+            SetInteractText(true);
+            SetShopText(false);
         }
     }
 
     public void BuySpell()
     {
         WorldController wc = worldController.GetComponent<WorldController>();
+        TP_Status tpStatus = wc.PlayerObj.GetComponent<TP_Status>();
         //TP_Status tpStatus = worldController.GetComponent<WorldController>().PlayerObj.GetComponent<TP_Status>();
         //Attack spell = tpStatus.flamethrowerObj.GetComponent<Attack>();
 
@@ -76,6 +82,10 @@ public class Runestone : MonoBehaviour {
             spellText = "(X) " + spell.myName + " Lv" + (newLevel + 1) + " $" + spell.upgradeCost;
             shopText = spellText + constructionText;
             shopTextObj.text = shopText;
+
+            tpStatus.interactionState = InteractionState.Default;
+            SetInteractText(true);
+            SetShopText(false);
         }
     }
 

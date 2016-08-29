@@ -24,7 +24,6 @@ public class Flamethrower : Attack
 
     public override void Upgrade(int myLevel)
     {
-        Debug.Log("non parent upgrade");
         switch (myLevel)
         {
             case 1:
@@ -35,7 +34,6 @@ public class Flamethrower : Attack
                 timeLeft = duration;
                 recoverySlower = 2;
                 recoveryBooster = 1;
-                Debug.Log("newlv"+level);
                 break;
             case 2:
                 level = 2;

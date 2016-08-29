@@ -46,7 +46,7 @@ GameObject:
   - 23: {fileID: 2302140}
   - 135: {fileID: 13522280}
   - 114: {fileID: 11409324}
-  - 114: {fileID: 11450888}
+  - 114: {fileID: 11405594}
   m_Layer: 8
   m_Name: Rod Runestone
   m_TagString: Target
@@ -98,6 +98,7 @@ GameObject:
   - 23: {fileID: 2308306}
   - 102: {fileID: 10296708}
   - 114: {fileID: 11473938}
+  - 114: {fileID: 11497428}
   m_Layer: 8
   m_Name: interactText
   m_TagString: Untagged
@@ -176,7 +177,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152676}
-  m_LocalRotation: {x: -0.7071066, y: 0, z: 0, w: -0.70710695}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.99}
   m_LocalScale: {x: 0.33333334, y: 0.33333337, z: 0.33333337}
   m_Children: []
@@ -387,6 +388,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToLookAt: {fileID: 0}
+--- !u!114 &11405594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5118bcc772bcd734e9921553b672ed9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactTextObj: {fileID: 10296708}
+  shopTextObj: {fileID: 10275044}
+  interactionLight: {fileID: 10871534}
+  interactText: (Y) Interact
+  cancelText: (Y) Cancel
+  shopText: (X) Buy Spell          (B) Buy Construction
+  worldController: {fileID: 0}
+  spellObj: {fileID: 0}
+  constructionIndex: 1
+  spellText: 
+  constructionText: 
 --- !u!114 &11409324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -405,28 +428,6 @@ MonoBehaviour:
   isKillable: 1
   isRunestone: 1
   worldController: {fileID: 0}
---- !u!114 &11450888
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c922e6b8d6a849d47ae53e51a622ffba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactTextObj: {fileID: 10296708}
-  shopTextObj: {fileID: 10275044}
-  interactionLight: {fileID: 10871534}
-  interactText: (Y) Interact
-  cancelText: (Y) Cancel
-  shopText: (X) Buy Spell          (B) Buy Construction
-  worldController: {fileID: 0}
-  spellObj: {fileID: 0}
-  constructionIndex: 1
-  spellText: 
-  constructionText: 
 --- !u!114 &11473938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -439,6 +440,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToLookAt: {fileID: 0}
+--- !u!114 &11497428
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!135 &13522280
 SphereCollider:
   m_ObjectHideFlags: 1

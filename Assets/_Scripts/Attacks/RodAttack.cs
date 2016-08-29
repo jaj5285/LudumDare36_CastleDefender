@@ -19,7 +19,6 @@ public class RodAttack : Attack
     }
     public override void Upgrade(int myLevel)
     {
-        Debug.Log("Rod upgrade was called!");
         switch (myLevel)
         {
             case 2:
