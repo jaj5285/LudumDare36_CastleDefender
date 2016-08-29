@@ -27,7 +27,7 @@ public class Construction : MonoBehaviour {
 		}
 	}
 
-	public void receiveAttack (float damage) {
+	public void receiveAttack (EnemyBehavior enemy, float damage) {
 		this.curHealth -= damage;
 
         if (isRunestone)
@@ -44,7 +44,7 @@ public class Construction : MonoBehaviour {
             }
 
             // Do Destroy actions
-            //Destroy(this.gameObject, 1f);
+			enemy.removeTarget();
 			this.tag = "Untagged";
 			this.gameObject.active = false;
 		}

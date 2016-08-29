@@ -17,7 +17,6 @@ public class EnemyManager : MonoBehaviour {
 	public int levelRadix = 5;
 	public int numLevels = 4;
 
-	public int numEnemies = 25;
 	public int waveStrength = 4;
 
 	public float initialDelay = 15f;
@@ -44,6 +43,11 @@ public class EnemyManager : MonoBehaviour {
 		while (GameRunning) {	// While Wave is active etc.
 
 			if (!waveActive) {
+				StartCoroutine (spawnWave ());
+			}
+
+			GameObject[] activeEnemies = GameObject.FindGameObjectsWithTag ("Enemy");
+			if (activeEnemies.Length == 0) {
 				StartCoroutine (spawnWave ());
 			}
 

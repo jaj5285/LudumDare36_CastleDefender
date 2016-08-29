@@ -59,7 +59,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (this.isAttacking)
         {
-			if (this.curTarget == null || !this.curTarget.active) { this.removeTarget(); }
+			if (this.curTarget == null) { this.removeTarget(); }
         }
         else {
             this.moveUnitTowardDest();
@@ -101,11 +101,12 @@ public class EnemyBehavior : MonoBehaviour
     public void removeTarget()
     {
         this.isAttacking = false;
+		this.curDestination = null;
     }
 
     private void moveUnitTowardDest()
     {
-        this.curProgress = Mathf.Clamp01(this.curProgress + (travelSpeed / distToNextNode) * Time.deltaTime);
+		this.curProgress = Mathf.Clamp01(this.curProgress + ((travelSpeed * ((isBrambleSlowed) ? (brambleSlowRatio) : (1f))) / distToNextNode) * Time.deltaTime);
 
         if (this.curProgress == 1f)
         {
@@ -132,7 +133,7 @@ public class EnemyBehavior : MonoBehaviour
 
             yield return new WaitForSeconds(this.attackDuration);
 			if (this.curTarget != null) {
-				this.curTarget.GetComponent<Construction> ().receiveAttack (this.attackDamage);
+				this.curTarget.GetComponent<Construction> ().receiveAttack (this, this.attackDamage);
 			}
 
             yield return new WaitForSeconds(this.attackInterval);

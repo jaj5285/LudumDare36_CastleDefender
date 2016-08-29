@@ -173,6 +173,10 @@ Prefab:
       propertyPath: spellObj
       value: 
       objectReference: {fileID: 769689298}
+    - target: {fileID: 11405594, guid: aaa95547ef283d64bbc07523bf99d92d, type: 2}
+      propertyPath: spellObj
+      value: 
+      objectReference: {fileID: 113726, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aaa95547ef283d64bbc07523bf99d92d, type: 2}
   m_IsPrefabParent: 0
@@ -393,6 +397,10 @@ Prefab:
       propertyPath: spellObj
       value: 
       objectReference: {fileID: 1438852350}
+    - target: {fileID: 11468106, guid: 4971a46617ea6af46a2c6ebd03e542d3, type: 2}
+      propertyPath: spellObj
+      value: 
+      objectReference: {fileID: 110616, guid: 2e07de968ec54764db9db42aabd6a478, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4971a46617ea6af46a2c6ebd03e542d3, type: 2}
   m_IsPrefabParent: 0
@@ -520,7 +528,6 @@ MonoBehaviour:
   waveNum: 0
   levelRadix: 5
   numLevels: 4
-  numEnemies: 20
   waveStrength: 4
   initialDelay: 30
   waveSpawnInterval: 45
@@ -3330,6 +3337,10 @@ Prefab:
     - target: {fileID: 420356, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
       propertyPath: m_LocalRotation.w
       value: -0.110415146
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226924, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d225bf5e0410ff748a0f38768ceeac9e, type: 2}
