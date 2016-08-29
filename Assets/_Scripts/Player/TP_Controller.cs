@@ -159,11 +159,14 @@ public class TP_Controller : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.J) || Input.GetButtonDown("XboxX"))
         {
             // Drop Construction
-            BuilderManager._instance.dropCurItem();
-            // Reset interactionState
-            TP_Status._instance.interactionState = InteractionState.Default;
-            TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetInteractText(true);
-            TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetShopText(false);
+            bool wasDropped = BuilderManager._instance.dropCurItem();
+            if (wasDropped) 
+            {
+                // Reset interactionState
+                TP_Status._instance.interactionState = InteractionState.Default;
+                TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetInteractText(true);
+                TP_Status._instance.currRunestoneInRange.GetComponent<Runestone>().SetShopText(false);
+            }
         }
         //if ((Input.GetKeyDown(KeyCode.L) || Input.GetButtonDown("XboxB")))
         //{

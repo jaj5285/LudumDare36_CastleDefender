@@ -841,6 +841,8 @@ MonoBehaviour:
   spawnNodes:
   - {fileID: 1074739839}
   numEnemies: 10
+  waveStrength: 10
+  initialDelay: 15
   spawnInterval: 30
 --- !u!4 &1849955620
 Transform:

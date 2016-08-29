@@ -36,7 +36,7 @@ public class BuilderManager : MonoBehaviour {
 		}
 	}
 
-	public void dropCurItem () {
+	public bool dropCurItem () {
 		if (curHeldObj != null && curHeldObj.GetComponent<Placer>().goodPlace) {
 			// Create correct Drop Prefab
 			GameObject dropped = GameObject.Instantiate (this.dropPrefabs [this.curHeldObjIndex]);
@@ -52,6 +52,8 @@ public class BuilderManager : MonoBehaviour {
 			// Destroy Held Prefab
 			Destroy (curHeldObj);
 			curHeldObj = null;
+            return true;
 		}
+        return false;
 	}
 }
